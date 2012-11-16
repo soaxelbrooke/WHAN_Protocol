@@ -73,7 +73,7 @@ uint8 removeNodeFromAddressBook(uint16 networkAddress)
 }
 
 // Returns the number of address book entries
-uint8 numAddressBookEntries(void)
+uint8 numAddressEntries(void)
 {
     return (MY_ADDRESS_BOOK_LENGTH - numFreeAddressEntries());
 }
@@ -183,7 +183,55 @@ uint8 numNodesWithInterest(uint8 interest)
             }
             
         }
-        if (addressBook[i].locale == interest)
+        
+    }
+    
+    return result;
+    
+}
+
+// Returns a count of the number of nodes in the address book with any of the 
+// passed in interest
+uint8 numNodesWithInterests(uint8 numInterests, uint8 *interests)
+{
+    uint8 result = 0;
+    uint8 i = 0, j = 0, k = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        for (j = 0; j < numInterests; j++)
+        {
+            for (k = 0; k < addressBook[i].numInterests; k++)
+            {
+                if (addressBook[i].interests[k] == interests[j])
+                {
+                    // If a match is found, increment count and break k-for-loop
+                    result += 1;
+                    
+                    break;
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    return result;
+    
+}
+
+// Returns a count of the number of nodes in the address book in the passed in
+// locale
+uint8 numNodesInLocale(uint8 locale)
+{
+    uint8 result = 0;
+    uint8 i = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        if (addressBook[i].locale == locale)
         {
             result += 1;
             
@@ -195,37 +243,85 @@ uint8 numNodesWithInterest(uint8 interest)
     
 }
 
-// Returns a count of the number of nodes in the address book with any of the 
-// passed in interest
-uint8 numNodesWithInterests(uint8 numIntersts, uint8 *interests)
-{
-    return 0;
-}
-
-// Returns a count of the number of nodes in the address book in the passed in
-// locale
-uint8 numNodesInLocale(uint8 locale)
-{
-    return 0;
-}
-
 // Returns a count of the number of nodes in the address book in the passed in 
 // locales
 uint8 numNodesInLocales(uint8 numLocales, uint8 *locales)
 {
-    return 0;
+    uint8 result = 0;
+    uint8 i = 0, j = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        for (j = 0; j < numLocales; j++)
+        {
+            if (addressBook[i].locale == locales[j])
+            {
+                result += 1;
+                
+                break;
+                
+            }
+            
+        }
+        
+    }
+    
+    return result;
+    
 }
 
 // Returns a count of nodes with given capabilities
 uint8 numNodesWithCapability(uint8 capability)
 {
-    return 0;
+    uint8 result = 0;
+    uint8 i = 0, j = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        for (j = 0; j < addressBook[i].numCapabilities; j++)
+        {
+            if (addressBook[i].capabilities[j] == capability)
+            {
+                result += 1;
+                break;
+                
+            }
+            
+        }
+        
+    }
+    
+    return result;
+    
 }
 
 // Return a count of nodes with any of given capabilities
-uint8 numNodesWithCapabilities(uint8 numCapabilities, uint8 *capabilites)
+uint8 numNodesWithCapabilities(uint8 numCapabilities, uint8 *capabilities)
 {
-    return 0;
+    uint8 result = 0;
+    uint8 i = 0, j = 0, k = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        for (j = 0; j < numCapabilities; j++)
+        {
+            for (k = 0; k < addressBook[i].numCapabilities; k++)
+            {
+                if (addressBook[i].capabilities[k] == capabilities[j])
+                {
+                    // If a match is found, increment count and break k-for-loop
+                    result += 1;
+                    
+                    break;
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
 }
 
 // Returns a count of nodes in given locales with given interests
@@ -247,12 +343,43 @@ uint8 numNodesInLocalesWithCapabilities(uint8 numLocales, uint8 *locales,
 // allocated.
 void nodesInLocale(uint16 *networkAddresses, uint8 locale)
 {
+    uint8 i = 0;
+    uint8 nodesFound = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        if (addressBook[i].locale == locale)
+        {
+            networkAddresses[nodesFound] = addressBook[i].networkAddress;
+            
+            nodesFound += 1;
+            
+        }
+        
+    }
     
 }
 
 void nodesInLocales(uint16 *networkAddresses, uint8 numLocales, uint8 *locales)
 {
+    uint8 nodesFound = 0;
+    uint8 i = 0, j = 0;
     
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        for (j = 0; j < numLocales; j++)
+        {
+            if (addressBook[i].locale == locales[j])
+            {
+                networkAddresses[nodesFound] = addressBook[i].networkAddress;
+                
+                nodesFound += 1;
+                
+            }
+            
+        }
+        
+    }
 }
 
 // Populates a passed in array with list of nodes with given interests.
@@ -260,12 +387,52 @@ void nodesInLocales(uint16 *networkAddresses, uint8 numLocales, uint8 *locales)
 // allocated.
 void nodesWithInterest(uint16 *networkAddresses, uint8 interest)
 {
+    uint8 nodesFound = 0;
+    uint8 i = 0, j = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        for (j = 0; j < addressBook[i].numInterests; j++)
+        {
+            if (addressBook[i].interests[j] == interest)
+            {
+                networkAddresses[nodesFound] = addressBook[i].networkAddress;
+                
+                nodesFound += 1;
+                
+            }
+            
+        }
+        
+    }
     
 }
 
 void nodesWithInterests(uint16 *networkAddresses, uint8 numInterests, 
     uint8 *interests)
 {
+    uint8 nodesFound = 0;
+    uint8 i = 0, j = 0, k = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        for (j = 0; j < numInterests; j++)
+        {
+            for (k = 0; k < addressBook[i].numInterests; k++)
+            {
+                if (addressBook[i].interests[k] == interests[j])
+                {
+                    networkAddresses[nodesFound] = addressBook[i].networkAddress;
+                    
+                    nodesFound += 1;
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
     
 }
 
@@ -274,12 +441,52 @@ void nodesWithInterests(uint16 *networkAddresses, uint8 numInterests,
 // been allocated.
 void nodesWithCapability(uint16 *networkAddresses, uint8 capability)
 {
+    uint8 nodesFound = 0;
+    uint8 i = 0, j = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        for (j = 0; j < addressBook[i].numCapabilities; j++)
+        {
+            if (addressBook[i].capabilities[j] == capability)
+            {
+                networkAddresses[nodesFound] = addressBook[i].networkAddress;
+                
+                nodesFound += 1;
+                
+            }
+            
+        }
+        
+    }
     
 }
 
 void nodesWithCapabilities(uint16 *networkAddresses, uint8 numCapabilities, 
     uint8 *capabilities)
 {
+    uint8 nodesFound = 0;
+    uint8 i = 0, j = 0, k = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        for (j = 0; j < numCapabilities; j++)
+        {
+            for (k = 0; k < addressBook[i].numCapabilities; k++)
+            {
+                if (addressBook[i].capabilities[k] == capabilities[j])
+                {
+                    networkAddresses[nodesFound] = addressBook[i].networkAddress;
+                    
+                    nodesFound += 1;
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
     
 }
 
