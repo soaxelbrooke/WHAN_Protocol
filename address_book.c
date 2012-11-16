@@ -9,7 +9,7 @@ address_entry addressBook[MY_ADDRESS_BOOK_LENGTH];
 // Add a device to the address book (returns non-zero if address book is full)
 // Only interests that match this nodes capabilities are stored
 uint8 addNodeToAddressBook(uint16 networkAddress, uint32 macHi, uint32 macLow, 
-    uint8 locale, uint8 numIntersts, uint8 *interests, uint8 numCapabilities,
+    uint8 locale, uint8 numInterests, uint8 *interests, uint8 numCapabilities,
     uint8 *capabilities)
 {
     uint8 result = 0;
@@ -152,7 +152,7 @@ uint32 getMacHigh(uint16 networkAddress)
     {
         if (addressBook[i].networkAddress == networkAddress)
         {
-            result = addressBook[i].macHigh;
+            result = addressBook[i].macHi;
             
             break;
             

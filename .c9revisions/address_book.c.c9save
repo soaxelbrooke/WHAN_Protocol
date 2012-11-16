@@ -9,3 +9,5 @@
 {"ts":1353093604662,"patch":[[{"diffs":[[0,"_LENGTH]"],[1,";"],[0,"\r\n\r\n// T"]],"start1":74,"start2":74,"length1":16,"length2":17}]],"length":7229,"saved":false}
 {"ts":1353093630859,"patch":[[{"diffs":[[0,"sEntries"],[1,"()"],[0,");\r\n}\r\n\r"]],"start1":2261,"start2":2261,"length1":16,"length2":18}]],"length":7231,"saved":false}
 {"ts":1353093647611,"patch":[[{"diffs":[[0,"Book(uin"],[1,"t"],[0,"16 netwo"]],"start1":2708,"start2":2708,"length1":16,"length2":17}]],"length":7232,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1353095268598,"patch":[[{"diffs":[[0,"i].macHi"],[-1,"gh"],[0,";\r\n     "]],"start1":3854,"start2":3854,"length1":18,"length2":16}]],"length":7230,"saved":false}
+{"ts":1353095313049,"patch":[[{"diffs":[[0,", uint8 numInter"],[1,"e"],[0,"sts, uint8 *inte"]],"start1":402,"start2":402,"length1":32,"length2":33}]],"length":7231,"saved":false}

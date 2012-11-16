@@ -38,20 +38,20 @@ void sendFormattedMessage(uint16 networkAddress, message myMessage)
     uint8 i = 0;
     uint32 macLow = getMacLow(networkAddress);
     uint32 macHigh = getMacHigh(networkAddress);
-    uint8 rfDataLength = myMessage.messageLength + 7;
+    uint8 rfDataLength = myMessage.length + 7;
     uint8 messageBuffer[rfDataLength];
     
     messageBuffer[0] = myMessage.sourceLocale;
     messageBuffer[1] = (uint8)(myMessage.sourceDeviceType);
     messageBuffer[2] = (uint8)(myMessage.sourceDeviceType >> 8);
-    messageBuffer[3] = myMessage.messageCount;
-    messageBuffer[4] = myMessage.messageIndex;
-    messageBuffer[5] = myMessage.messageType;
-    messageBuffer[6] = myMessage.messageLength;
+    messageBuffer[3] = myMessage.count;
+    messageBuffer[4] = myMessage.index;
+    messageBuffer[5] = myMessage.type;
+    messageBuffer[6] = myMessage.length;
     
-    for (i = 0; i < messageLength; i++) 
+    for (i = 0; i < rfDataLength; i++) 
     {
-        messageBuffer[i+7] = myMessage.messageData[i];
+        messageBuffer[i+7] = myMessage.data[i];
         
     }
     
@@ -74,13 +74,13 @@ void sendUserCommandChangeValue(uint16 networkAddr, uint8 targetValueType,
     uint8 buffer[6];
     
     // Populate message fields
-    myMessage.sourceLocale = myLocale();
-    myMessage.deviceType = MY_DEVICE_TYPE;
-    myMessage.messageCount = 0;
-    myMessage.messageIndex = 0;
-    myMessage.messageType = MESSAGE_TYPE_USER_COMMAND;
-    myMessage.messageLength = 6;
-    myMessage.messageData = buffer;
+    myMessage.sourceLocale = getMyLocale();
+    myMessage.sourceDeviceType = MY_DEVICE_TYPE;
+    myMessage.count = 0;
+    myMessage.index = 0;
+    myMessage.type = MESSAGE_TYPE_USER_COMMAND;
+    myMessage.length = 6;
+    myMessage.data = buffer;
     
     // Populate data buffer
     buffer[0] = USER_COMMAND_CHANGE_VALUE;
@@ -101,12 +101,12 @@ void sendUserCommandPromptAbilities(uint16 networkAddress)
     
     // Populate message fields
     myMessage.sourceLocale = myLocale();
-    myMessage.deviceType = MY_DEVICE_TYPE;
-    myMessage.messageCount = 0;
-    myMessage.messageIndex = 0;
-    myMessage.messageType = MESSAGE_TYPE_USER_COMMAND;
-    myMessage.messageLength = 1;
-    myMessage.messageData = buffer;
+    myMessage.sourceDeviceType = MY_DEVICE_TYPE;
+    myMessage.count = 0;
+    myMessage.index = 0;
+    myMessage.type = MESSAGE_TYPE_USER_COMMAND;
+    myMessage.length = 1;
+    myMessage.data = buffer;
     
     buffer[0] = USER_COMMAND_PROMPT_ABILITIES;
     
@@ -125,12 +125,12 @@ void sendNotification(uint16 networkAddress, notification myNotification)
     
     // Populate message fields
     myMessage.sourceLocale = myLocale();
-    myMessage.deviceType = MY_DEVICE_TYPE;
-    myMessage.messageCount = 0;//TODO: CALCULATE RQUIRED NUM OF MESSAGES!
-    myMessage.messageIndex = 0;
-    myMessage.messageType = MESSAGE_TYPE_NOTIFICATION;
-    myMessage.messageLength = bufferLen;
-    myMessage.messageData = buffer;
+    myMessage.sourceDeviceType = MY_DEVICE_TYPE;
+    myMessage.count = 0;//TODO: CALCULATE RQUIRED NUM OF MESSAGES!
+    myMessage.index = 0;
+    myMessage.type = MESSAGE_TYPE_NOTIFICATION;
+    myMessage.length = bufferLen;
+    myMessage.data = buffer;
     
     buffer[0] = myNotification.numNotifications;
     for (i = 0; i < myNotification.numNotifications; i++)
@@ -158,12 +158,12 @@ void sendNotifications(uint8 numberOfDestinations, uint16 *networkAddresses,
     
     // Populate message fields
     myMessage.sourceLocale = myLocale();
-    myMessage.deviceType = MY_DEVICE_TYPE;
-    myMessage.messageCount = 0;//TODO: CALCULATE RQUIRED NUM OF MESSAGES!
-    myMessage.messageIndex = 0;
-    myMessage.messageType = MESSAGE_TYPE_NOTIFICATION;
-    myMessage.messageLength = bufferLen;
-    myMessage.messageData = buffer;
+    myMessage.sourceDeviceType = MY_DEVICE_TYPE;
+    myMessage.count = 0;//TODO: CALCULATE RQUIRED NUM OF MESSAGES!
+    myMessage.index = 0;
+    myMessage.type = MESSAGE_TYPE_NOTIFICATION;
+    myMessage.length = bufferLen;
+    myMessage.data = buffer;
     
     // Populate buffer
     buffer[0] = myNotification.numNotifications;
@@ -194,11 +194,11 @@ void sendNotificationRequest(uint16 networkAddress)
     
     // Populate message fields
     myMessage.sourceLocale = myLocale();
-    myMessage.deviceType = MY_DEVICE_TYPE;
-    myMessage.messageCount = 0;
-    myMessage.messageIndex = 0;
-    myMessage.messageType = MESSAGE_TYPE_NOTIFICATION_REQUEST;
-    myMessage.messageLength = 0;
+    myMessage.sourceDeviceType = MY_DEVICE_TYPE;
+    myMessage.count = 0;
+    myMessage.index = 0;
+    myMessage.type = MESSAGE_TYPE_NOTIFICATION_REQUEST;
+    myMessage.length = 0;
     
     sendFormattedMessage(networkAddress, myMessage);
     
@@ -212,11 +212,11 @@ void sendSubscribeRequest(uint16 networkAddress)
     
     // Populate message fields
     myMessage.sourceLocale = myLocale();
-    myMessage.deviceType = MY_DEVICE_TYPE;
-    myMessage.messageCount = 0;
-    myMessage.messageIndex = 0;
-    myMessage.messageType = MESSAGE_TYPE_SUBSCRIBE_REQUEST;
-    myMessage.messageLength = 0;
+    myMessage.sourceDeviceType = MY_DEVICE_TYPE;
+    myMessage.count = 0;
+    myMessage.index = 0;
+    myMessage.type = MESSAGE_TYPE_SUBSCRIBE_REQUEST;
+    myMessage.length = 0;
     
     sendFormattedMessage(networkAddress, myMessage);
     
@@ -233,7 +233,7 @@ void sendCapabilitiesNotification(uint8 capabilitiesLength,
     
     // Populate message fields
     myMessage.sourceLocale = myLocale();
-    myMessage.deviceType = MY_DEVICE_TYPE;
+    myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;
     myMessage.index = 0;
     myMessage.type = MESSAGE_TYPE_CAPABILITY_NOTIFICATION;
@@ -260,7 +260,7 @@ void sendInterestsNotification(uint8 interestsLength, uint8 *interests,
     
     // Populate message fields
     myMessage.sourceLocale = myLocale();
-    myMessage.deviceType = MY_DEVICE_TYPE;
+    myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;
     myMessage.index = 0;
     myMessage.type = MESSAGE_TYPE_INTEREST_NOTIFICATION;
@@ -278,7 +278,7 @@ void sendInterestsNotification(uint8 interestsLength, uint8 *interests,
     
 }
 
-#IFDEF COORDINATOR
+#ifdef COORDINATOR
 // Subscribe Instruction
 void sendSubscribeInstruction(uint16 targetNetworkAddress, 
     uint16 networkAddress, uint32 macHi, uint32 macLow, uint8 locale, 
@@ -290,12 +290,12 @@ void sendSubscribeInstruction(uint16 targetNetworkAddress,
     
     // Populate message fields
     myMessage.sourceLocale = myLocale();
-    myMessage.deviceType = MY_DEVICE_TYPE;
-    myMessage.messageCount = 0;
-    myMessage.messageIndex = 0;
-    myMessage.messageType = MESSAGE_TYPE_SUBSCRIBE_INSTRUCTION;
-    myMessage.messageLength = 12 + numCapabilities;
-    myMessage.messageData = buffer;
+    myMessage.sourceDeviceType = MY_DEVICE_TYPE;
+    myMessage.count = 0;
+    myMessage.index = 0;
+    myMessage.type = MESSAGE_TYPE_SUBSCRIBE_INSTRUCTION;
+    myMessage.length = 12 + numCapabilities;
+    myMessage.data = buffer;
     
     buffer[0] = (uint8)(networkAddress >> 8);
     buffer[1] = (uint8)(networkAddres);
@@ -317,7 +317,7 @@ void sendSubscribeInstruction(uint16 targetNetworkAddress,
     sendFormattedMessage(targetNetworkAddress, myMessage);
 }
 
-#ENDIF
+#endif
 
 // Safety Alarms
 void sendSafetyAlarm(uint8 riskType, uint8 riskLocale)
@@ -329,11 +329,11 @@ void sendSafetyAlarm(uint8 riskType, uint8 riskLocale)
     
     // Populate message fields
     myMessage.sourceLocale = myLocale();
-    myMessage.deviceType = MY_DEVICE_TYPE;
-    myMessage.messageCount = 0;
-    myMessage.messageIndex = 0;
-    myMessage.messageType = MESSAGE_TYPE_SAFETY_ALARM;
-    myMessage.messageLength = 0;
+    myMessage.sourceDeviceType = MY_DEVICE_TYPE;
+    myMessage.count = 0;
+    myMessage.index = 0;
+    myMessage.type = MESSAGE_TYPE_SAFETY_ALARM;
+    myMessage.length = 0;
     
     for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
     {

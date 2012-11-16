@@ -18,3 +18,60 @@
 {"ts":1352857911218,"patch":[[{"diffs":[[0,"Data"],[-1,"[]"],[0,")\r\n{"]],"start1":199,"start2":199,"length1":10,"length2":8}]],"length":12837,"saved":false}
 {"ts":1353093373780,"patch":[[{"diffs":[[0,"include "],[-1,"<"],[1,"\""],[0,"whan_pro"]],"start1":5,"start2":5,"length1":17,"length2":17}]],"length":12837,"saved":false}
 {"ts":1353093375121,"patch":[[{"diffs":[[0,"otocol.h"],[-1,">"],[1,"\""],[0,"\r\n\r\n// T"]],"start1":21,"start2":21,"length1":17,"length2":17}]],"length":12837,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1353095352681,"patch":[[{"diffs":[[0,"\n\r\n#"],[-1,"IFDEF"],[1,"ifdef"],[0," COO"]],"start1":8388,"start2":8388,"length1":13,"length2":13}]],"length":12837,"saved":false}
+{"ts":1353095356755,"patch":[[{"diffs":[[0,"\n\r\n#"],[-1,"ENDIF"],[1,"endif"],[0,"\r\n\r\n"]],"start1":9682,"start2":9682,"length1":13,"length2":13}]],"length":12837,"saved":false}
+{"ts":1353095656963,"patch":[[{"diffs":[[0,".sourceLocale = "],[1,"get"],[0,"myLocale();\r\n   "]],"start1":2280,"start2":2280,"length1":32,"length2":35}]],"length":12840,"saved":false}
+{"ts":1353095658907,"patch":[[{"diffs":[[0,"le = get"],[-1,"m"],[1,"M"],[0,"yLocale("]],"start1":2291,"start2":2291,"length1":17,"length2":17}]],"length":12840,"saved":false}
+{"ts":1353095711142,"patch":[[{"diffs":[[0,"= myMessage."],[-1,"messageC"],[1,"c"],[0,"ount;\r\n    m"]],"start1":1499,"start2":1499,"length1":32,"length2":25}]],"length":12833,"saved":false}
+{"ts":1353095714395,"patch":[[{"diffs":[[0,"= myMessage."],[-1,"message"],[1,"i"],[0,"Index;\r\n    "]],"start1":1540,"start2":1540,"length1":31,"length2":25}]],"length":12827,"saved":false}
+{"ts":1353095716967,"patch":[[{"diffs":[[0,"essage.i"],[-1,"I"],[0,"ndex;\r\n "]],"start1":1545,"start2":1545,"length1":17,"length2":16}]],"length":12826,"saved":false}
+{"ts":1353095719625,"patch":[[{"diffs":[[0,"Message."],[-1,"messageT"],[0,"ype;\r\n  "]],"start1":1585,"start2":1585,"length1":24,"length2":16}]],"length":12818,"saved":false}
+{"ts":1353095720879,"patch":[[{"diffs":[[0,"Message."],[1,"t"],[0,"ype;\r\n  "]],"start1":1585,"start2":1585,"length1":16,"length2":17}]],"length":12819,"saved":false}
+{"ts":1353095725956,"patch":[[{"diffs":[[0,"= myMessage."],[-1,"messageL"],[1,"l"],[0,"ength;\r\n    "]],"start1":1621,"start2":1621,"length1":32,"length2":25}]],"length":12812,"saved":false}
+{"ts":1353095731082,"patch":[[{"diffs":[[0,"= myMessage."],[-1,"messageL"],[1,"l"],[0,"ength + 7;\r\n"]],"start1":1225,"start2":1225,"length1":32,"length2":25}]],"length":12805,"saved":false}
+{"ts":1353095757391,"patch":[[{"diffs":[[0," 0; i < "],[-1,"message"],[1,"rfData"],[0,"Length; "]],"start1":1653,"start2":1653,"length1":23,"length2":22}]],"length":12804,"saved":false}
+{"ts":1353095764908,"patch":[[{"diffs":[[0,"Message."],[-1,"messageD"],[1,"d"],[0,"ata[i];\r"]],"start1":1720,"start2":1720,"length1":24,"length2":17}]],"length":12797,"saved":false}
+{"ts":1353095815486,"patch":[[{"diffs":[[0,"\r\n    myMessage."],[-1,"d"],[1,"sourceD"],[0,"eviceType = MY_D"]],"start1":2267,"start2":2267,"length1":33,"length2":39}]],"length":12803,"saved":false}
+{"ts":1353095875395,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageC"],[1,"c"],[0,"ount = 0;\r\n "]],"start1":3160,"start2":3160,"length1":32,"length2":25}]],"length":12796,"saved":false}
+{"ts":1353095879110,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageC"],[1,"c"],[0,"ount = 0;\r\n "]],"start1":2321,"start2":2321,"length1":32,"length2":25}]],"length":12789,"saved":false}
+{"ts":1353095880759,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageC"],[1,"c"],[0,"ount = 0;//T"]],"start1":3879,"start2":3879,"length1":32,"length2":25}]],"length":12782,"saved":false}
+{"ts":1353095882646,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageC"],[1,"c"],[0,"ount = 0;//T"]],"start1":5065,"start2":5065,"length1":32,"length2":25}]],"length":12775,"saved":false}
+{"ts":1353095887463,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageC"],[1,"c"],[0,"ount = 0;\r\n "]],"start1":6624,"start2":6624,"length1":32,"length2":25}]],"length":12768,"saved":false}
+{"ts":1353095888496,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageC"],[1,"c"],[0,"ount = 0;\r\n "]],"start1":6164,"start2":6164,"length1":32,"length2":25}]],"length":12761,"saved":false}
+{"ts":1353095894189,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageC"],[1,"c"],[0,"ount = 0;\r\n "]],"start1":8754,"start2":8754,"length1":32,"length2":25}]],"length":12754,"saved":false}
+{"ts":1353095896433,"patch":[[{"diffs":[[0,"age."],[-1,"messageC"],[1,"c"],[0,"ount"]],"start1":9973,"start2":9973,"length1":16,"length2":9}]],"length":12747,"saved":false}
+{"ts":1353095905965,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageI"],[1,"i"],[0,"ndex = 0;\r\n "]],"start1":9991,"start2":9991,"length1":32,"length2":25}]],"length":12740,"saved":false}
+{"ts":1353095912696,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageI"],[1,"i"],[0,"ndex = 0;\r\n "]],"start1":8780,"start2":8780,"length1":32,"length2":25}]],"length":12733,"saved":false}
+{"ts":1353095917708,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageI"],[1,"i"],[0,"ndex = 0;\r\n "]],"start1":6643,"start2":6643,"length1":32,"length2":25}]],"length":12726,"saved":false}
+{"ts":1353095920836,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageI"],[1,"i"],[0,"ndex = 0;\r\n "]],"start1":6190,"start2":6190,"length1":32,"length2":25}]],"length":12719,"saved":false}
+{"ts":1353095923847,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageI"],[1,"i"],[0,"ndex = 0;\r\n "]],"start1":5133,"start2":5133,"length1":32,"length2":25}]],"length":12712,"saved":false}
+{"ts":1353095926606,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageI"],[1,"i"],[0,"ndex = 0;\r\n "]],"start1":3947,"start2":3947,"length1":32,"length2":25}]],"length":12705,"saved":false}
+{"ts":1353095929800,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageI"],[1,"i"],[0,"ndex = 0;\r\n "]],"start1":3179,"start2":3179,"length1":32,"length2":25}]],"length":12698,"saved":false}
+{"ts":1353095932286,"patch":[[{"diffs":[[0,"age."],[-1,"messageI"],[1,"i"],[0,"ndex"]],"start1":2355,"start2":2355,"length1":16,"length2":9}]],"length":12691,"saved":false}
+{"ts":1353095941291,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageT"],[1,"t"],[0,"ype = MESSAG"]],"start1":2373,"start2":2373,"length1":32,"length2":25}]],"length":12684,"saved":false}
+{"ts":1353095944737,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageT"],[1,"t"],[0,"ype = MESSAG"]],"start1":3191,"start2":3191,"length1":32,"length2":25}]],"length":12677,"saved":false}
+{"ts":1353095948747,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageT"],[1,"t"],[0,"ype = MESSAG"]],"start1":3945,"start2":3945,"length1":32,"length2":25}]],"length":12670,"saved":false}
+{"ts":1353095952474,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageT"],[1,"t"],[0,"ype = MESSAG"]],"start1":5117,"start2":5117,"length1":32,"length2":25}]],"length":12663,"saved":false}
+{"ts":1353095954496,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageT"],[1,"t"],[0,"ype = MESSAG"]],"start1":6160,"start2":6160,"length1":32,"length2":25}]],"length":12656,"saved":false}
+{"ts":1353095957546,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageT"],[1,"t"],[0,"ype = MESSAG"]],"start1":6599,"start2":6599,"length1":32,"length2":25}]],"length":12649,"saved":false}
+{"ts":1353095963612,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageT"],[1,"t"],[0,"ype = MESSAG"]],"start1":8722,"start2":8722,"length1":32,"length2":25}]],"length":12642,"saved":false}
+{"ts":1353095998428,"patch":[[{"diffs":[[0,"\r\n    myMessage."],[-1,"d"],[1,"sourceD"],[0,"eviceType = MY_D"]],"start1":7787,"start2":7787,"length1":33,"length2":39}]],"length":12648,"saved":false}
+{"ts":1353095999728,"patch":[[{"diffs":[[0,"\r\n    myMessage."],[-1,"d"],[1,"sourceD"],[0,"eviceType = MY_D"]],"start1":3091,"start2":3091,"length1":33,"length2":39}]],"length":12654,"saved":false}
+{"ts":1353096014966,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageL"],[1,"l"],[0,"ength = 6;\r\n"]],"start1":2422,"start2":2422,"length1":32,"length2":25}]],"length":12647,"saved":false}
+{"ts":1353096048603,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageL"],[1,"l"],[0,"ength = 1;\r\n"]],"start1":3239,"start2":3239,"length1":32,"length2":25}]],"length":12640,"saved":false}
+{"ts":1353096070218,"patch":[[{"diffs":[[0,"\r\n    myMessage."],[-1,"l"],[1,"messageL"],[0,"ength = 1;\r\n    "]],"start1":3235,"start2":3235,"length1":33,"length2":40}]],"length":12647,"saved":false}
+{"ts":1353096071916,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageL"],[1,"l"],[0,"ength = 1;\r\n"]],"start1":3239,"start2":3239,"length1":32,"length2":25}]],"length":12640,"saved":false}
+{"ts":1353096128609,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageL"],[1,"l"],[0,"ength = buff"]],"start1":3986,"start2":3986,"length1":32,"length2":25}]],"length":12633,"saved":false}
+{"ts":1353096131853,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageD"],[1,"d"],[0,"ata = buffer"]],"start1":4021,"start2":4021,"length1":32,"length2":25}]],"length":12626,"saved":false}
+{"ts":1353096136686,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageD"],[1,"d"],[0,"ata = buffer"]],"start1":5186,"start2":5186,"length1":32,"length2":25}]],"length":12619,"saved":false}
+{"ts":1353096139973,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageL"],[1,"l"],[0,"ength = buff"]],"start1":5144,"start2":5144,"length1":32,"length2":25}]],"length":12612,"saved":false}
+{"ts":1353096145703,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageL"],[1,"l"],[0,"ength = 0;\r\n"]],"start1":6617,"start2":6617,"length1":32,"length2":25}]],"length":12605,"saved":false}
+{"ts":1353096153332,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageL"],[1,"l"],[0,"ength = 12 +"]],"start1":8743,"start2":8743,"length1":32,"length2":25}]],"length":12598,"saved":false}
+{"ts":1353096155699,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageD"],[1,"d"],[0,"ata = buffer"]],"start1":8789,"start2":8789,"length1":32,"length2":25}]],"length":12591,"saved":false}
+{"ts":1353096163603,"patch":[[{"diffs":[[0,"age."],[-1,"messageT"],[1,"t"],[0,"ype "]],"start1":9876,"start2":9876,"length1":16,"length2":9}]],"length":12584,"saved":false}
+{"ts":1353096166909,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageL"],[1,"l"],[0,"ength = 0;\r\n"]],"start1":9917,"start2":9917,"length1":32,"length2":25}]],"length":12577,"saved":false}
+{"ts":1353096176358,"patch":[[{"diffs":[[0,"\r\n    myMessage."],[1,"source"],[0,"deviceType = MY_"]],"start1":9768,"start2":9768,"length1":32,"length2":38}]],"length":12583,"saved":false}
+{"ts":1353096177769,"patch":[[{"diffs":[[0,"e.source"],[-1,"d"],[1,"D"],[0,"eviceTyp"]],"start1":9782,"start2":9782,"length1":17,"length2":17}]],"length":12583,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1353096460101,"patch":[[{"diffs":[[0,"  myMessage."],[-1,"messageD"],[1,"d"],[0,"ata = buffer"]],"start1":2449,"start2":2449,"length1":32,"length2":25},{"diffs":[[0,"Message."],[-1,"messageD"],[1,"d"],[0,"ata = bu"]],"start1":3263,"start2":3263,"length1":24,"length2":17}]],"length":12569,"saved":false}
+{"ts":1353096500742,"patch":[[{"diffs":[[0,"\r\n    myMessage."],[-1,"d"],[1,"sourceD"],[0,"eviceType = MY_D"]],"start1":3781,"start2":3781,"length1":33,"length2":39},{"diffs":[[0,"\r\n    myMessage."],[-1,"d"],[1,"sourceD"],[0,"eviceType = MY_D"]],"start1":4945,"start2":4945,"length1":33,"length2":39},{"diffs":[[0,"\r\n    myMessage."],[-1,"d"],[1,"sourceD"],[0,"eviceType = MY_D"]],"start1":6022,"start2":6022,"length1":33,"length2":39},{"diffs":[[0,"\r\n    myMessage."],[-1,"d"],[1,"sourceD"],[0,"eviceType = MY_D"]],"start1":6467,"start2":6467,"length1":33,"length2":39},{"diffs":[[0,"\r\n    myMessage."],[-1,"d"],[1,"sourceD"],[0,"eviceType = MY_D"]],"start1":7013,"start2":7013,"length1":33,"length2":39},{"diffs":[[0,"Message."],[-1,"d"],[1,"sourceD"],[0,"eviceTyp"]],"start1":8609,"start2":8609,"length1":17,"length2":23}]],"length":12605,"saved":false}
+{"ts":1353096542654,"patch":[[{"diffs":[[0,"age."],[-1,"messageL"],[1,"l"],[0,"engt"]],"start1":6193,"start2":6193,"length1":16,"length2":9}]],"length":12598,"saved":false}

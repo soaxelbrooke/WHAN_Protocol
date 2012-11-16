@@ -15,7 +15,7 @@ void sendMessage(uint32 macHi, uint32 macLow, uint16 networkAddress,
 
 // Get message from the receive buffer and put it into the passed in variables
 void getMessage(uint32 *macHi, uint32 *macLow, uint16 *networkAddress,
-    uint8 *rfData)
+    uint8 *rfData);
 
 // Get message length (number of bytes in the "Received Data" field in the 
 // Zigbee Receive Packet frame)
@@ -47,13 +47,13 @@ void sendNotificationRequest(uint16 networkAddress, uint8 numTypes,
 void sendSubscribeRequest(uint16 networkAddress, uint8 numTypes,
     uint8 *types);
 
-#IFDEF COORDINATOR
+#ifdef COORDINATOR
 // Subscribe Instruction
 void sendSubscribeInstruction(uint16 networkAddress, uint16 networkAddress,
     uint32 macHi, uint32 macLow, uint8 locale, uint8 numberOfCapabilities,
     uint8 *capabilities);
 
-#ENDIF
+#endif
 
 // Response
 // TODO: better define this!

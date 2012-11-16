@@ -51,3 +51,6 @@
 {"ts":1353093386044,"patch":[[{"diffs":[[0,"ude "],[-1,"<"],[1,"\""],[0,"addr"]],"start1":142,"start2":142,"length1":9,"length2":9}]],"length":2675,"saved":false}
 {"ts":1353093390115,"patch":[[{"diffs":[[0,"essage.h"],[-1,">"],[1,"\""],[0,"\r\n#inclu"]],"start1":126,"start2":126,"length1":17,"length2":17}]],"length":2675,"saved":false}
 {"ts":1353093391980,"patch":[[{"diffs":[[0,"ok.h"],[-1,">"],[1,"\""],[0,"\r\n\r\n"]],"start1":157,"start2":157,"length1":9,"length2":9}]],"length":2675,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1353095363416,"patch":[[{"diffs":[[0,"\n\r\n#"],[-1,"IFDEF"],[1,"ifdef"],[0," COO"]],"start1":1750,"start2":1750,"length1":13,"length2":13}]],"length":2675,"saved":false}
+{"ts":1353095367211,"patch":[[{"diffs":[[0,"\n\r\n#"],[-1,"ENDIF"],[1,"endif"],[0,"\r\n\r\n"]],"start1":1978,"start2":1978,"length1":13,"length2":13}]],"length":2675,"saved":false}
+{"ts":1353095599353,"patch":[[{"diffs":[[0,"*rfData)"],[1,";"],[0,"\r\n\r\n// G"]],"start1":575,"start2":575,"length1":16,"length2":17}]],"length":2676,"saved":false}

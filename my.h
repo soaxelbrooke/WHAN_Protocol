@@ -1,6 +1,8 @@
 
 // Include systems specific type def
 #include "cytypes.h"
+// Include for system specific prototypes (like memcpy)
+#include "device.h"
 
 // Uncomment this if the device is a coordinator
 // #DEFINE COORDINATOR 1
