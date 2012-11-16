@@ -1,0 +1,18 @@
+{"ts":1352703844305,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"\r\n// Uncomment this if the device is a coordinator\r\n// #DEFINE COORDINATOR 1\r\n\r\n// Max number of nodes that this node keeps track of\r\n#define MY_ADDRESS_BOOK_LENGTH 64\r\n\r\n#define MY_DEVICE_TYPE 0\r\n\r\n// Defines the total number of types of data this node can measure\r\n#define MY_NUM_CAPABILITIES 3\r\n// Defines the total number of types of data this node is interested in\r\n#define MY_NUM_INTERESTS 0\r\n\r\n// Returns locale of this device\r\nuint8 getMyLocale();\r\n\r\n// Sets locale of this device\r\nvoid setMyLocale(uint8 locale);"]],"start1":0,"start2":0,"length1":0,"length2":521}]],"length":521}
+{"contributors":[],"silentsave":true,"ts":1352704837123,"patch":[[{"diffs":[[0,"locale);"],[1,"\r\n\r\n"]],"start1":513,"start2":513,"length1":8,"length2":12}]],"length":525,"saved":false}
+{"ts":1352704840099,"patch":[[{"diffs":[[0,"locale);\r\n\r\n"],[1,"struct "]],"start1":513,"start2":513,"length1":12,"length2":19}]],"length":532,"saved":false}
+{"ts":1352704844520,"patch":[[{"diffs":[[0,"\r\n\r\n"],[1,"typedef "],[0,"struct"],[-1," "]],"start1":521,"start2":521,"length1":11,"length2":18}]],"length":539,"saved":false}
+{"ts":1352704845945,"patch":[[{"diffs":[[0,"f struct"],[1,"\r\n"]],"start1":531,"start2":531,"length1":8,"length2":10}]],"length":541,"saved":false}
+{"ts":1352704847178,"patch":[[{"diffs":[[0,"struct\r\n"],[1,"{\r\n    "]],"start1":533,"start2":533,"length1":8,"length2":15}]],"length":548,"saved":false}
+{"ts":1352704849451,"patch":[[{"diffs":[[0,"\n{\r\n    "],[1,"uint"]],"start1":540,"start2":540,"length1":8,"length2":12}]],"length":552,"saved":false}
+{"ts":1352704850907,"patch":[[{"diffs":[[0,"\n{\r\n    uint"],[1,"8 asfd"]],"start1":540,"start2":540,"length1":12,"length2":18}]],"length":558,"saved":false}
+{"ts":1352704852998,"patch":[[{"diffs":[[0,"nt8 asfd"],[1,";\r\n    int "]],"start1":550,"start2":550,"length1":8,"length2":19}]],"length":569,"saved":false}
+{"ts":1352704857565,"patch":[[{"diffs":[[0,"    "],[-1,"u"],[0,"int"],[-1,"8 asfd;\r\n    int "],[1," fo"]],"start1":544,"start2":544,"length1":25,"length2":10}]],"length":554,"saved":false}
+{"ts":1352704860001,"patch":[[{"diffs":[[0,"int "],[-1,"fo"],[1,"bar;\r\n    "]],"start1":548,"start2":548,"length1":6,"length2":14}]],"length":562,"saved":false}
+{"ts":1352704860795,"patch":[[{"diffs":[[0,"t bar;\r\n"],[-1,"    "]],"start1":550,"start2":550,"length1":12,"length2":8}]],"length":558,"saved":false}
+{"ts":1352704863076,"patch":[[{"diffs":[[0,"t bar;\r\n"],[1,"} foo;"]],"start1":550,"start2":550,"length1":8,"length2":14}]],"length":564,"saved":false}
+{"ts":1352704924106,"patch":[[{"diffs":[[0,");\r\n"],[-1,"\r\ntypedef struct\r\n{\r\n    int bar;\r\n} foo;"]],"start1":519,"start2":519,"length1":45,"length2":4}]],"length":523,"saved":false}
+{"ts":1352707432253,"patch":[[{"diffs":[[0,"TERESTS "],[-1,"0"],[1,"1"],[0,"\r\n\r\n// R"]],"start1":388,"start2":388,"length1":17,"length2":17}]],"length":523,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1352750897039,"patch":[[{"diffs":[[0,"TS 1\r\n\r\n"],[1,"\r\n\r\n"],[0,"// Retur"]],"start1":393,"start2":393,"length1":16,"length2":20}]],"length":527,"saved":false}
+{"ts":1352750898233,"patch":[[{"diffs":[[0,"\r\n\r\n\r\n\r\n"],[1,"\r\n"],[0,"// Retur"]],"start1":397,"start2":397,"length1":16,"length2":18}]],"length":529,"saved":false}
+{"ts":1352750901246,"patch":[[{"diffs":[[0,"TS 1\r\n\r\n"],[-1,"\r\n\r\n\r\n"],[0,"// Retur"]],"start1":393,"start2":393,"length1":22,"length2":16}]],"length":523,"saved":false}
