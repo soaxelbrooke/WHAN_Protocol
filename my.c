@@ -1,6 +1,6 @@
 
 
-#include <my.h>
+#include "my.h"
 
 static uint8 myLocale;
 

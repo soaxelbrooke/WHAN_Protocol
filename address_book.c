@@ -1,8 +1,8 @@
 
 
-#include <address_book.h>
+#include "address_book.h"
 
-address_entry addressBook[MY_ADDRESS_BOOK_LENGTH]
+address_entry addressBook[MY_ADDRESS_BOOK_LENGTH];
 
 // TODO: make some mechanism for storing this in non-volatile memory!
 
@@ -75,7 +75,7 @@ uint8 removeNodeFromAddressBook(uint16 networkAddress)
 // Returns the number of address book entries
 uint8 numAddressBookEntries(void)
 {
-    return (MY_ADDRESS_BOOK_LENGTH - numFreeAddressEntries);
+    return (MY_ADDRESS_BOOK_LENGTH - numFreeAddressEntries());
 }
 
 // Returns number of free spaces in address book
@@ -99,7 +99,7 @@ uint8 numFreeAddressEntries(void)
 }
 
 // Returns nonzero if network address is not in address book
-uint8 isInAddressBook(uin16 networkAddress)
+uint8 isInAddressBook(uint16 networkAddress)
 {
     uint8 result = 1;
     uint8 i = 0;

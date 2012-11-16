@@ -1,5 +1,5 @@
 
-#include <whan_protocol.h>
+#include "whan_protocol.h"
 
 static uint8 myCapabilities[] = {UNIT_TYPE_DEGREES_C_ENVIRONMENT,
     UNIT_TYPE_PRESSURE, UNIT_TYPE_LUMENS};

@@ -17,3 +17,5 @@
 {"ts":1352704915951,"patch":[[{"diffs":[[0,"k;\r\n    "],[1,"fo"],[0,"\r\n    my"]],"start1":208,"start2":208,"length1":16,"length2":18}]],"length":245,"saved":false}
 {"ts":1352704917688,"patch":[[{"diffs":[[0,")\r\n{"],[-1,"\r\n    foo k;\r\n    f"],[0,"o\r\n "]],"start1":194,"start2":194,"length1":27,"length2":8}]],"length":226,"saved":false}
 {"ts":1352704919057,"patch":[[{"diffs":[[0,"cale)\r\n{"],[-1,"o"],[0,"\r\n    my"]],"start1":190,"start2":190,"length1":17,"length2":16}]],"length":225,"saved":false}
+{"ts":1353093328599,"patch":[[{"diffs":[[0,"ude "],[-1,"<"],[1,"\""],[0,"my.h"]],"start1":9,"start2":9,"length1":9,"length2":9}]],"length":225,"saved":false}
+{"ts":1353093329983,"patch":[[{"diffs":[[0,"my.h"],[-1,">"],[1,"\""],[0,"\r\n\r\n"]],"start1":14,"start2":14,"length1":9,"length2":9}]],"length":225,"saved":false}

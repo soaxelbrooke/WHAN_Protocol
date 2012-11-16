@@ -1,9 +1,15 @@
 
+// Include systems specific type def
+#include "cytypes.h"
+
 // Uncomment this if the device is a coordinator
 // #DEFINE COORDINATOR 1
 
-// Max number of nodes that this node keeps track of
+// Define address book related constants
 #define MY_ADDRESS_BOOK_LENGTH 64
+#define MY_ADDRESS_BOOK_INTEREST_LIMIT MY_NUM_CAPABILITIES
+#define MY_ADDRESS_BOOK_CAPABILITY_LIMIT MY_NUM_INTERESTS
+
 
 #define MY_DEVICE_TYPE 0
 

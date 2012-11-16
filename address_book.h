@@ -1,5 +1,5 @@
 
-#include <my.h>
+#include "my.h"
 
 typedef struct
 {
@@ -30,7 +30,7 @@ uint8 numFreeAddressEntries(void);
 uint8 numAddressEntries(void);
 
 // Returns nonzero if network address is not in address book
-uint8 isInAddressBook(uin16 networkAddress);
+uint8 isInAddressBook(uint16 networkAddress);
 
 // Gets the low 32 bits of the MAC associated with the passed in network address
 uint32 getMacLow(uint16 networkAddress);

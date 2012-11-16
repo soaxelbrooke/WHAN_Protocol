@@ -4,9 +4,9 @@
 // Change Log:
 //  11/8/2012   - Created
 
-#include <my.h>
-#include <message.h>
-#include <address_book.h>
+#include "my.h"
+#include "message.h"
+#include "address_book.h"
 
 // Send a message via the Zigbee Transmit Request command
 // See pg 89 of ftp://ftp1.digi.com/support/documentation/90000976_C.pdf

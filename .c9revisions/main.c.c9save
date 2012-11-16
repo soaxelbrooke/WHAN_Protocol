@@ -21,3 +21,5 @@
 {"ts":1352858058912,"patch":[[{"diffs":[[0,"ength()]"],[1,";"],[0,"\r\n    me"]],"start1":4502,"start2":4502,"length1":16,"length2":17}]],"length":6442,"saved":false}
 {"ts":1352858066426,"patch":[[{"diffs":[[0,"];\r\n"],[-1,"    uint8 rfData[getMessageLength()];\r\n    message myMessage;\r\n"],[0,"    "]],"start1":4470,"start2":4470,"length1":71,"length2":8}]],"length":6379,"saved":false}
 {"ts":1352858067752,"patch":[[{"diffs":[[0,"\r\n    \r\n"],[-1,"    \r\n    \r\n"],[0,"    // S"]],"start1":4472,"start2":4472,"length1":28,"length2":16}]],"length":6367,"saved":false}
+{"ts":1353093321660,"patch":[[{"diffs":[[0,"include "],[-1,"<"],[1,"\""],[0,"whan_pro"]],"start1":3,"start2":3,"length1":17,"length2":17}]],"length":6367,"saved":false}
+{"ts":1353093322961,"patch":[[{"diffs":[[0,"otocol.h"],[-1,">"],[1,"\""],[0,"\r\n\r\nstat"]],"start1":19,"start2":19,"length1":17,"length2":17}]],"length":6367,"saved":false}

@@ -1,6 +1,6 @@
 
 
-#include <whan_protocol.h>
+#include "whan_protocol.h"
 
 // This function is for interfacing with the UART interface
 void sendMessage(uint32 macHi, uint32 macLow, uint16 networkAddress, 
