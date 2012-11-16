@@ -67,7 +67,7 @@ uint8 getMessageType(uint8 *messageData)
 }
 
 // User Commands
-void sendUserCommandChangeValue(uint16 networkAddr, uint8 targetValueType, 
+void sendUserCommandChangeValue(uint16 networkAddress, uint8 targetValueType, 
     uint32 targetValueData)
 {
     message myMessage;
@@ -85,12 +85,12 @@ void sendUserCommandChangeValue(uint16 networkAddr, uint8 targetValueType,
     // Populate data buffer
     buffer[0] = USER_COMMAND_CHANGE_VALUE;
     buffer[1] = targetValueType;
-    buffer[2] = (uint8) ()targetValueData >> 24); // Big endian transmission
-    buffer[3] = (uint8) ()targetValueData >> 16);
-    buffer[4] = (uint8) ()targetValueData >> 8);
-    buffer[5] = (uint8) ()targetValueData >> 0);
+    buffer[2] = (uint8) (targetValueData >> 24); // Big endian transmission
+    buffer[3] = (uint8) (targetValueData >> 16);
+    buffer[4] = (uint8) (targetValueData >> 8);
+    buffer[5] = (uint8) (targetValueData >> 0);
     
-    sendFormattedMessage(targetAddr, myMessage);
+    sendFormattedMessage(networkAddress, myMessage);
     
 }
     
@@ -100,7 +100,7 @@ void sendUserCommandPromptAbilities(uint16 networkAddress)
     uint8 buffer[1];
     
     // Populate message fields
-    myMessage.sourceLocale = myLocale();
+    myMessage.sourceLocale = getMyLocale();
     myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;
     myMessage.index = 0;
@@ -121,10 +121,10 @@ void sendNotification(uint16 networkAddress, notification myNotification)
     message myMessage;
     uint8 bufferLen = myNotification.numNotifications*5; // This will need to change for multiple messages...
     uint8 i = 0;
-    uint8 buffer[bufferLen];
+    uint8 buffer[bufferLen+1];
     
     // Populate message fields
-    myMessage.sourceLocale = myLocale();
+    myMessage.sourceLocale = getMyLocale();
     myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;//TODO: CALCULATE RQUIRED NUM OF MESSAGES!
     myMessage.index = 0;
@@ -140,7 +140,7 @@ void sendNotification(uint16 networkAddress, notification myNotification)
         buffer[i*5+3] = (uint8) (myNotification.data[i] >> 8);
         buffer[i*5+4] = (uint8) (myNotification.data[i] >> 0);
         
-        buffer[i*5+1] = myNotification.type[i];
+        buffer[i*5+1] = myNotification.types[i];
         
     }
     
@@ -154,10 +154,10 @@ void sendNotifications(uint8 numberOfDestinations, uint16 *networkAddresses,
     message myMessage;
     uint8 bufferLen = myNotification.numNotifications*5; // This will need to change for multiple messages...
     uint8 i = 0;
-    uint8 buffer[bufferLen];
+    uint8 buffer[bufferLen+1];
     
     // Populate message fields
-    myMessage.sourceLocale = myLocale();
+    myMessage.sourceLocale = getMyLocale();
     myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;//TODO: CALCULATE RQUIRED NUM OF MESSAGES!
     myMessage.index = 0;
@@ -174,7 +174,7 @@ void sendNotifications(uint8 numberOfDestinations, uint16 *networkAddresses,
         buffer[i*5+3] = (uint8) (myNotification.data[i] >> 8);
         buffer[i*5+4] = (uint8) (myNotification.data[i] >> 0);
         
-        buffer[i*5+1] = myNotification.type[i];
+        buffer[i*5+1] = myNotification.types[i];
         
     }
     
@@ -188,17 +188,27 @@ void sendNotifications(uint8 numberOfDestinations, uint16 *networkAddresses,
 
 
 // Notification Request
-void sendNotificationRequest(uint16 networkAddress)
+void sendNotificationRequest(uint16 networkAddress, uint8 numTypes, 
+    uint8 *types)
 {
+    uint8 i = 0;
     message myMessage;
+    uint8 buffer[numTypes+1];
     
     // Populate message fields
-    myMessage.sourceLocale = myLocale();
+    myMessage.sourceLocale = getMyLocale();
     myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;
     myMessage.index = 0;
     myMessage.type = MESSAGE_TYPE_NOTIFICATION_REQUEST;
     myMessage.length = 0;
+    
+    buffer[0] = numTypes;
+    for (i = 0; i < numTypes; i++)
+    {
+        buffer[i+1] = types[i];
+        
+    }
     
     sendFormattedMessage(networkAddress, myMessage);
     
@@ -206,17 +216,27 @@ void sendNotificationRequest(uint16 networkAddress)
 
 
 // Subscribe Request
-void sendSubscribeRequest(uint16 networkAddress)
+void sendSubscribeRequest(uint16 networkAddress, uint8 numTypes,
+    uint8 *types)
 {
+    uint8 i = 0;
     message myMessage;
+    uint8 buffer[numTypes+1];
     
     // Populate message fields
-    myMessage.sourceLocale = myLocale();
+    myMessage.sourceLocale = getMyLocale();
     myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;
     myMessage.index = 0;
     myMessage.type = MESSAGE_TYPE_SUBSCRIBE_REQUEST;
     myMessage.length = 0;
+    
+    buffer[0] = numTypes;
+    for (i = 0; i < numTypes; i++)
+    {
+        buffer[i+1] = types[i];
+        
+    }
     
     sendFormattedMessage(networkAddress, myMessage);
     
@@ -228,11 +248,11 @@ void sendCapabilitiesNotification(uint8 capabilitiesLength,
     uint8 *capabilities)
 {
     message myMessage;
-    uint8 buffer[capabilitiesLength];
+    uint8 buffer[capabilitiesLength+1];
     uint8 i = 0;
     
     // Populate message fields
-    myMessage.sourceLocale = myLocale();
+    myMessage.sourceLocale = getMyLocale();
     myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;
     myMessage.index = 0;
@@ -255,11 +275,11 @@ void sendInterestsNotification(uint8 interestsLength, uint8 *interests,
     uint8 *locales)
 { // TODO: This will definitely need multi-spanning messages.
     message myMessage;
-    uint8 buffer[2*interestsLength];
+    uint8 buffer[2*interestsLength+1];
     uint8 i = 0;
     
     // Populate message fields
-    myMessage.sourceLocale = myLocale();
+    myMessage.sourceLocale = getMyLocale();
     myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;
     myMessage.index = 0;
@@ -289,7 +309,7 @@ void sendSubscribeInstruction(uint16 targetNetworkAddress,
     uint8 i = 0;
     
     // Populate message fields
-    myMessage.sourceLocale = myLocale();
+    myMessage.sourceLocale = getMyLocale();
     myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;
     myMessage.index = 0;
@@ -323,25 +343,24 @@ void sendSubscribeInstruction(uint16 targetNetworkAddress,
 void sendSafetyAlarm(uint8 riskType, uint8 riskLocale)
 {
     // TODO: add something for possible universale risk locale? (0?)
+    uint8 i = 0;
     message myMessage;
+    uint8 numNodes = numNodesInLocale(riskLocale);
+    uint16 nodeList[numNodes];
     
-    getNodesInLocale(riskLocale, nodesInLocale);
+    nodesInLocale(nodeList, riskLocale);
     
     // Populate message fields
-    myMessage.sourceLocale = myLocale();
+    myMessage.sourceLocale = getMyLocale();
     myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;
     myMessage.index = 0;
     myMessage.type = MESSAGE_TYPE_SAFETY_ALARM;
     myMessage.length = 0;
     
-    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    for (i = 0; i < numNodes; i++)
     {
-        if (addressBook[i].locale == riskLocale)
-        {
-            sendFormattedMessage(addressBook[i].networkAddress, myMessage);
-            
-        }
+        sendFormattedMessage(nodeList[i], myMessage);
         
     }
     
@@ -358,11 +377,9 @@ uint8 notifyInterestedNodes(notification myNotification)
     uint8 i = 0, j = 0, k = 0, numNotified = 0;
     notification N;
     int32 data[myNotification.numNotifications];
-    int8 types[myNotification.numNotifications];
-    N.data = data;
-    N.types = types;
+    uint8 types[myNotification.numNotifications];
     
-    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+/*    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
     {
         if (addressBook[i].locale != 0)
         {
@@ -407,7 +424,60 @@ uint8 notifyInterestedNodes(notification myNotification)
             
         }
         
+    }*/
+    
+    uint8 numNodes = numAddressEntries();
+    uint16 nodeList[numNodes];
+    uint8 typeTemp[myNotification.numNotifications];
+    
+    N.data = data;
+    N.types = types;
+    
+    nodesInAddressBook(nodeList);
+    
+    // Construct a special notification for each node in the address book
+    for (i = 0; i < numNodes; i++)
+    {
+        //N.numNotifications = numNodeInterests(nodeList[i]);
+        nodeInterests(typeTemp, nodeList[i]);
+        
+        // For each notification type in the passed in notification, check
+        // if this entry is interested in it
+        
+        for (j = 0; j < myNotification.numNotifications; j++)
+        {
+            // For each interest in this entry, check if the passed in 
+            // notification is equal to it
+            
+            for (k = 0; k < numNodeInterests(nodeList[i]); k++)
+            {
+                if (typeTemp[k] == myNotification.types[j])
+                {
+                    // If entry is interested, add this data to notification
+                    N.data[N.numNotifications] = myNotification.data[j];
+                    N.types[N.numNotifications] = myNotification.types[j];
+                    N.numNotifications += 1;
+                    
+                    // Exit k for loop, as this data type has been handled
+                    break;
+                    
+                }
+                
+            }
+            
+        }
+        
+        
+        // Send notification if it has any interests in the new data
+        if (N.numNotifications > 0)
+        {
+            sendNotification(nodeList[i], N);
+            numNotified += 1;
+            
+        }
+        
     }
+    
     
     return numNotified;
     

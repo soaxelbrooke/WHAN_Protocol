@@ -22,6 +22,10 @@
 #define UNIT_TYPE_OCCUPANTS	0x05
 #define UNIT_TYPE_PRESSURE	0x06
 
+// Define user commands
+#define USER_COMMAND_CHANGE_VALUE    0x00
+#define USER_COMMAND_PROMPT_ABILITIES	0x01
+
 
 typedef struct 
 {

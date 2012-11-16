@@ -38,7 +38,7 @@ uint32 getMacLow(uint16 networkAddress);
 // Gets the hi 32 bits of the MAC associated with the passed in network address
 uint32 getMacHigh(uint16 networkAddress);
 
-/*
+
 // Returns a count of the number of nodes in the address book with the passed in
 // interest
 uint8 numNodesWithInterest(uint8 interest);
@@ -97,4 +97,12 @@ void nodesInLocalesWithInterests(uint16 *networkAddresses, uint8 numLocales,
 void nodesInLocalesWithCapabilities(uint16 *networkAddresses, uint8 numLocales,
     uint8 *locales, uint8 numCapabilities, uint8 *capabilities);
     
-*/
+// Writes a list of all nodes in the network to the passed in pointer
+void nodesInAddressBook(uint16 *networkAddresses);
+
+// Returns the number of interests a node has
+uint8 numNodeInterests(uint16 networkAddress);
+
+// Writes a list of interests a node has to the passed in pointer
+void nodeInterests(uint8 *interests, uint16 networkAddress);
+

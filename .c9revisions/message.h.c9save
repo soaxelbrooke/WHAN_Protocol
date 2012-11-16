@@ -51,3 +51,11 @@
 {"ts":1352751724883,"patch":[[{"diffs":[[0,"S\t0x05\r\n"],[1,"#define "],[0,"UNIT_TYP"]],"start1":731,"start2":731,"length1":16,"length2":24}]],"length":1073,"saved":false}
 {"ts":1352751726879,"patch":[[{"diffs":[[0,"efines\r\n"],[-1,"\r\n"],[0,"#define "]],"start1":512,"start2":512,"length1":18,"length2":16}]],"length":1071,"saved":false}
 {"ts":1352751745353,"patch":[[{"diffs":[[0,"06\r\n\r\n\r\n"],[-1,"\r\n\r\n"],[0,"typedef "]],"start1":766,"start2":766,"length1":20,"length2":16}]],"length":1067,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1353096791149,"patch":[[{"diffs":[[0,"E\t0x06\r\n\r\n\r\n"],[1,"\r\n\r\n"],[0,"typedef stru"]],"start1":762,"start2":762,"length1":24,"length2":28}]],"length":1071,"saved":false}
+{"ts":1353096796882,"patch":[[{"diffs":[[0,"0x06\r\n\r\n"],[-1,"\r\n"],[1,"// Defi"],[0,"\r\n\r\ntype"]],"start1":764,"start2":764,"length1":18,"length2":23}]],"length":1076,"saved":false}
+{"ts":1353096800425,"patch":[[{"diffs":[[0,"\n// Defi"],[1,"ne user commands\r\n#"],[0,"\r\n\r\ntype"]],"start1":771,"start2":771,"length1":16,"length2":35}]],"length":1095,"saved":false}
+{"ts":1353096802285,"patch":[[{"diffs":[[0,"mmands\r\n"],[-1,"#"],[0,"\r\n\r\ntype"]],"start1":789,"start2":789,"length1":17,"length2":16}]],"length":1094,"saved":false}
+{"ts":1353096840660,"patch":[[{"diffs":[[0,"ands\r\n\r\n"],[1,"USER_COMMAND_CHANGE_VALUE    0x00\r\nUSER_COMMAND_PROMPT_ABILITIES\t0x01\r\n\r\n"],[0,"\r\ntypede"]],"start1":791,"start2":791,"length1":16,"length2":89}]],"length":1167,"saved":false}
+{"ts":1353096842990,"patch":[[{"diffs":[[0,"mmands\r\n"],[-1,"\r\n"],[1,"#"],[0,"USER_COM"]],"start1":789,"start2":789,"length1":18,"length2":17}]],"length":1166,"saved":false}
+{"ts":1353096844880,"patch":[[{"diffs":[[0,"mands\r\n#"],[1,"define "],[0,"USER_COM"]],"start1":790,"start2":790,"length1":16,"length2":23}]],"length":1173,"saved":false}
+{"ts":1353096847011,"patch":[[{"diffs":[[0,"  0x00\r\n"],[1,"#define "],[0,"USER_COM"]],"start1":832,"start2":832,"length1":16,"length2":24}]],"length":1181,"saved":false}

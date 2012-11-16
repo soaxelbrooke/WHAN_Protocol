@@ -57,12 +57,13 @@ void sendSubscribeInstruction(uint16 networkAddress, uint16 networkAddress,
 
 // Response
 // TODO: better define this!
-void sendResponse(uint16 networkAddress, data?);
+void sendResponse(uint16 networkAddress);
 
 // Capability/Interest Notifications
 void sendCapabilitiesNotification(uint8 capabilitiesLength, 
     uint8 *capabilities);
-void sendInterestsNotification(uint8 interestsLength, uint8 *interests);
+void sendInterestsNotification(uint8 interestsLength, uint8 *interests,
+    uint8 *locales);
 
 // Safety Alarms
 void sendSafetyAlarm(uint8 riskType, uint8 riskLocale);
