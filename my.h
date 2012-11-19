@@ -13,6 +13,9 @@
 #define MY_ADDRESS_BOOK_CAPABILITY_LIMIT MY_NUM_INTERESTS
 
 
+#define MAX_SINGLE_MESSAGE_LENGTH 75 // TODO: What's the actual number for this?
+
+
 #define MY_DEVICE_TYPE 0
 
 // Defines the total number of types of data this node can measure

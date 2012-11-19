@@ -369,6 +369,56 @@ void sendSafetyAlarm(uint8 riskType, uint8 riskLocale)
     
 }
 
+// Send a raw packet of data.
+void sendRawData(uint16 networkAddress, uint8 rawDataLength, uint8 *rawData)
+{
+    message myMessage;
+    uint8 buffer[MAX_SINGLE_MESSAGE_LENGTH];
+    
+    // Populate message fields
+    myMessage.sourceLocale = getMyLocale();
+    myMessage.sourceDeviceType = MY_DEVICE_TYPE;
+    myMessage.count = 0;
+    myMessage.index = 0;
+    myMessage.type = MESSAGE_TYPE_SAFETY_ALARM;
+    myMessage.length = 0;
+    myMessage.data = buffer;
+    
+    memcpy(buffer, rawData, rawDataLength);
+    
+    sendFormattedMessage(networkAddress, myMessage);
+    
+}
+
+// Get notification data from message buffer
+void getNotificationData(notification *myNotification, message *myMessage)
+{
+    uint8 i = 0;
+    
+    for (i = 0; i < myNotification.numNotifications; i++)
+    {
+        // TODO: figure out how to do this as a casted pointer instead of shifting and adding
+        // TODO: perhaps the notification data should really be data1 data2 data3 type1 type2 type3?
+        *myNotification.data[i] = (int32)((*myMessage.data[5*i+1] << 0) + 
+            (*myMessage.data[5*i+2] << 8) + (*myMessage.data[5*i+3] << 16) + 
+            (*myMessage.data[5*i+4] << 24));
+        *myNotification.types[i] = (uint8)(*myMessage.data[5*i+5]);
+    }
+    
+}
+    
+// Determine how many notifications are in the message currently in the message 
+// buffer
+uint8 getNumNotifications(message *myMessage)
+{
+    uint8 result = 0;
+    
+    result = *myMessage.data[0];
+    
+    return result;
+    
+}
+
 // Scans the address book for nodes that are interested in data contained in the
 // passed in notification and sends data to these nodes.  Returns the number of
 // nodes notified.

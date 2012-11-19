@@ -70,3 +70,9 @@
 {"ts":1353095499334,"patch":[[{"diffs":[[0,"ude "],[-1,"stdio.h "],[0,"for "]],"start1":69,"start2":69,"length1":16,"length2":8}]],"length":771,"saved":false}
 {"ts":1353095503339,"patch":[[{"diffs":[[0,"de \""],[-1,"stdio"],[1,"devicde"],[0,".h\"\r"]],"start1":125,"start2":125,"length1":13,"length2":15}]],"length":773,"saved":false}
 {"ts":1353095505997,"patch":[[{"diffs":[[0,"e \"devic"],[-1,"d"],[0,"e.h\"\r\n\r\n"]],"start1":126,"start2":126,"length1":17,"length2":16}]],"length":772,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1353266760043,"patch":[[{"diffs":[[0,"TS\r\n\r\n\r\n"],[1,"MAX_SINGLE_MESSAGE_LENGTH\r\n\r\n\r\n"],[0,"#define "]],"start1":412,"start2":412,"length1":16,"length2":47}]],"length":803,"saved":false}
+{"ts":1353266762528,"patch":[[{"diffs":[[0,"TS\r\n\r\n\r\n"],[1,"define "],[0,"MAX_SING"]],"start1":412,"start2":412,"length1":16,"length2":23}]],"length":810,"saved":false}
+{"ts":1353266764334,"patch":[[{"diffs":[[0,"TS\r\n\r\n\r\n"],[1,"#"],[0,"define M"]],"start1":412,"start2":412,"length1":16,"length2":17}]],"length":811,"saved":false}
+{"ts":1353266773669,"patch":[[{"diffs":[[0,"E_LENGTH"],[1," 75"],[0,"\r\n\r\n\r\n#d"]],"start1":445,"start2":445,"length1":16,"length2":19}]],"length":814,"saved":false}
+{"ts":1353266780151,"patch":[[{"diffs":[[0,"ENGTH 75"],[1," // TODO: What's the actual numberf"],[0,"\r\n\r\n\r\n#d"]],"start1":448,"start2":448,"length1":16,"length2":51}]],"length":849,"saved":false}
+{"ts":1353266783075,"patch":[[{"diffs":[[0,"l number"],[-1,"f"],[1," for this?"],[0,"\r\n\r\n\r\n#d"]],"start1":482,"start2":482,"length1":17,"length2":26}]],"length":858,"saved":false}

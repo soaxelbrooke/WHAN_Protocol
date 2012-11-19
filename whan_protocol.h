@@ -71,6 +71,13 @@ void sendSafetyAlarm(uint8 riskType, uint8 riskLocale);
 // Raw Data
 void sendRawData(uint8 dataLength, uint8 *data);
 
+// Get notification data from message buffer
+void getNotificationData(notification *myNotification, message *myMessage);
+    
+// Determine how many notifications are in the message currently in the message 
+// buffer
+uint8 getNumNotifications(message *myMessage);
+
 // Scans the address book for nodes that are interested in data contained in the
 // passed in notification and sends data to these nodes.  Returns the number of
 // nodes notified.
