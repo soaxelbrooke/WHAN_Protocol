@@ -2,6 +2,7 @@
 
 #include "whan_protocol.h"
 
+
 // This function is for interfacing with the UART interface
 void sendMessage(uint32 macHi, uint32 macLow, uint16 networkAddress, 
     uint8 rfDataLength, uint8 *rfData)
@@ -9,7 +10,9 @@ void sendMessage(uint32 macHi, uint32 macLow, uint16 networkAddress,
     
     // TODO: fill in this function to tie it to the system UART
     // It should implement the Zigbee Send Request command
-    
+    Zigbee_UART_1_SendMessage(macHi, macLow, networkAddress, rfDataLength, 
+    	rfData);
+	
 }
 
 // Get message from the receive buffer and put it into the passed in variables
@@ -19,7 +22,29 @@ void getMessage(uint32 *macHi, uint32 *macLow, uint16 *networkAddress,
     
     // TODO: fill in this function to tie it to the system UART
     // It should implement the Zigbee Receive Packet command
-    
+    Zigbee_UART_1_GetMessage(macHi, macLow, networkAddress, rfData);
+	
+	
+}
+
+// Populates the passed in struct with data from the RX buffer
+// TODO: this is the second of three buffers if this command is used.  This is
+// probably a good target for optimization.
+void getMessageStruct(message *myMessage)
+{
+	uint32 misc[1];
+	uint8 rfData[128];
+	
+	getMessage(misc, misc, (uint16*) misc, rfData);
+	
+	myMessage->sourceLocale = rfData[0];
+	myMessage->sourceDeviceType = (uint16) rfData[1];
+	myMessage->count = rfData[3];
+	myMessage->index = rfData[4];
+	myMessage->type = rfData[5];
+	myMessage->length = rfData[6];
+	memcpy(myMessage->data, (uint8 *)(rfData + 7), myMessage->length);
+	
 }
 
 // Get message length (the length of rfData)
@@ -28,7 +53,8 @@ uint8 getMessageLength(void)
     
     // TODO: fill in this function to allow host processor to allocate
     // proper amount of memory for getMessage function.
-    
+	return Zigbee_UART_1_GetMessageLength();
+	
 }
 
 // This function is called by the top level functions, and integrates with the
@@ -49,7 +75,7 @@ void sendFormattedMessage(uint16 networkAddress, message myMessage)
     messageBuffer[5] = myMessage.type;
     messageBuffer[6] = myMessage.length;
     
-    for (i = 0; i < rfDataLength; i++) 
+    for (i = 0; i < myMessage.length; i++) 
     {
         messageBuffer[i+7] = myMessage.data[i];
         
@@ -242,8 +268,21 @@ void sendSubscribeRequest(uint16 networkAddress, uint8 numTypes,
     
 }
 
+// Send Capability Notifications
+void sendMyCapabilitiesNotification(void)
+{
+	sendCapabilitiesNotification(MY_NUM_CAPABILITIES, getMyCapabilitiesPtr());
+	
+}
 
-// Capability/Interest Notifications
+void sendCapabilitiesNotificationStruct(
+	capabilitiesNotification *myCapabilitiesNotification)
+{
+	sendCapabilitiesNotification(myCapabilitiesNotification->numCapabilities,
+		myCapabilitiesNotification->capabilities);
+	
+}
+
 void sendCapabilitiesNotification(uint8 capabilitiesLength, 
     uint8 *capabilities)
 {
@@ -269,6 +308,22 @@ void sendCapabilitiesNotification(uint8 capabilitiesLength,
     
     sendFormattedMessage(0, myMessage);
     
+}
+
+// Send Interest Notifications
+void sendMyInterestsNotification(void)
+{
+	sendInterestsNotification(MY_NUM_INTERESTS, getMyInterestsPtr(), 
+		getMyInterestsLocalesPtr());
+	
+}
+
+void sendInterestsNotificationStruct(
+	interestsNotification *myInterestsNotification)
+{
+	sendInterestsNotification(myInterestsNotification->numInterests,
+		myInterestsNotification->interests, myInterestsNotification->locales);
+	
 }
 
 void sendInterestsNotification(uint8 interestsLength, uint8 *interests,
@@ -380,8 +435,8 @@ void sendRawData(uint16 networkAddress, uint8 rawDataLength, uint8 *rawData)
     myMessage.sourceDeviceType = MY_DEVICE_TYPE;
     myMessage.count = 0;
     myMessage.index = 0;
-    myMessage.type = MESSAGE_TYPE_SAFETY_ALARM;
-    myMessage.length = 0;
+    myMessage.type = MESSAGE_TYPE_RAW_DATA;
+    myMessage.length = rawDataLength;
     myMessage.data = buffer;
     
     memcpy(buffer, rawData, rawDataLength);
@@ -391,32 +446,130 @@ void sendRawData(uint16 networkAddress, uint8 rawDataLength, uint8 *rawData)
 }
 
 // Get notification data from message buffer
-void getNotificationData(notification *myNotification, message *myMessage)
+void getNotification(notification *myNotification, message myMessage)
 {
     uint8 i = 0;
     
-    for (i = 0; i < myNotification.numNotifications; i++)
+    for (i = 0; i < myNotification->numNotifications; i++)
     {
         // TODO: figure out how to do this as a casted pointer instead of shifting and adding
         // TODO: perhaps the notification data should really be data1 data2 data3 type1 type2 type3?
-        *myNotification.data[i] = (int32)((*myMessage.data[5*i+1] << 0) + 
-            (*myMessage.data[5*i+2] << 8) + (*myMessage.data[5*i+3] << 16) + 
-            (*myMessage.data[5*i+4] << 24));
-        *myNotification.types[i] = (uint8)(*myMessage.data[5*i+5]);
+        myNotification->data[i] = (int32)((myMessage.data[5*i+1] << 0) + 
+            (myMessage.data[5*i+2] << 8) + (myMessage.data[5*i+3] << 16) + 
+            (myMessage.data[5*i+4] << 24));
+        myNotification->types[i] = (uint8)(myMessage.data[5*i+5]);
     }
     
 }
     
 // Determine how many notifications are in the message currently in the message 
 // buffer
-uint8 getNumNotifications(message *myMessage)
+uint8 getNumNotifications(message myMessage)
 {
     uint8 result = 0;
     
-    result = *myMessage.data[0];
+    result = myMessage.data[0];
     
     return result;
     
+}
+
+// Get usercommand from the message buffer, populate passed in struct
+void getUserCommand(userCommand *myUserCommand, message myMessage)
+{
+	myUserCommand->command = myMessage.data[0];
+	
+	if (myUserCommand->command == USER_COMMAND_CHANGE_VALUE)
+	{
+		myUserCommand->data = (int32) myMessage.data[1]; // TODO: does this work like I think it does?
+		myUserCommand->type = myMessage.data[5];
+		
+	}
+	
+}
+
+// Get notification request from the message buffer
+void getNotificationRequest(notificationRequest *myNotificationRequest, 
+	message myMessage)
+{
+	myNotificationRequest->numTypes = myMessage.data[0];
+	memcpy(myNotificationRequest->types, (uint8*) (myMessage.data + 1), 
+		myNotificationRequest->numTypes);
+	
+}
+
+// Get subscribe request from message buffer
+void getSubscribeRequest(subscribeRequest *mySubscribeRequest, 
+	message myMessage)
+{
+	mySubscribeRequest->numTypes = myMessage.data[0];
+	memcpy(mySubscribeRequest->types, (uint8*) (myMessage.data + 1), 
+		mySubscribeRequest->numTypes);
+	
+}
+
+// Get response from the message buffer
+void getResponse(response *myResponse, message myMessage)
+{
+	// TBD
+}
+
+// Get capabilitiy notification from the message buffer
+void getCapabilityNotifification(
+	capabilitiesNotification *myCapabilitiesNotification, message myMessage)
+{
+	myCapabilitiesNotification->numCapabilities = myMessage.data[0];
+	memcpy(myCapabilitiesNotification->capabilities, 
+		(uint8*) (myMessage.data + 1), 
+		myCapabilitiesNotification->numCapabilities);
+	
+}
+	
+// Get interest notification from the message buffer
+void getInterestsNotification(interestsNotification *myInterestsNotification,
+	message myMessage)
+{
+	uint8 i = 0;
+	
+	myInterestsNotification->numInterests = myMessage.data[0];
+	for (i = 0; i < myInterestsNotification->numInterests; i++)
+	{
+		myInterestsNotification->interests[i] = myMessage.data[2*i+1];
+		myInterestsNotification->locales[i] = myMessage.data[2*i+2];
+		
+	}
+	
+}
+	
+// Get subscribe instruction from the message buffer
+void getSubscribeInstruction(subscribeInstruction *mySubscribeInstruction,
+	message myMessage)
+{
+	mySubscribeInstruction->networkAddress = (uint16) myMessage.data[0]; // TODO: does this work like I think it does?
+	mySubscribeInstruction->macLow = (uint32) myMessage.data[2];
+	mySubscribeInstruction->macHi = (uint32) myMessage.data[6];
+	mySubscribeInstruction->locale = myMessage.data[10];
+	mySubscribeInstruction->numCapabilities = myMessage.data[11];
+	memcpy(mySubscribeInstruction->capabilities, (uint8*) (myMessage.data + 12), 
+		mySubscribeInstruction->numCapabilities);
+	
+}
+	
+// Get safety alarm form the message buffer
+void getSafetyAlarm(safetyAlarm *mySafetyAlarm, message myMessage)
+{
+	mySafetyAlarm->riskType = myMessage.data[0];
+	mySafetyAlarm->riskLocale = myMessage.data[1];
+	
+}
+
+// Get raw data from the message buffer
+void getRawData(rawData *myRawData, message myMessage)
+{
+	myRawData->numBytes = myMessage.data[0];
+	memcpy(myRawData->data, (uint8*) (myMessage.data + 1), 
+		myRawData->numBytes);
+	
 }
 
 // Scans the address book for nodes that are interested in data contained in the

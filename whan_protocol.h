@@ -4,8 +4,6 @@
 // Change Log:
 //  11/8/2012   - Created
 
-#include "my.h"
-#include "message.h"
 #include "address_book.h"
 
 // Send a message via the Zigbee Transmit Request command
@@ -16,6 +14,10 @@ void sendMessage(uint32 macHi, uint32 macLow, uint16 networkAddress,
 // Get message from the receive buffer and put it into the passed in variables
 void getMessage(uint32 *macHi, uint32 *macLow, uint16 *networkAddress,
     uint8 *rfData);
+
+// Populates the passed in struct with data from the RX buffer
+void getMessageStruct(uint16 *srcNetworkAddress, uint32 *srcMacLow, 
+    uint32 *srcMacHi, message *myMessage);
 
 // Get message length (number of bytes in the "Received Data" field in the 
 // Zigbee Receive Packet frame)
@@ -60,23 +62,59 @@ void sendSubscribeInstruction(uint16 networkAddress, uint16 networkAddress,
 void sendResponse(uint16 networkAddress);
 
 // Capability/Interest Notifications
+void sendMyCapabilitiesNotification(void);
 void sendCapabilitiesNotification(uint8 capabilitiesLength, 
     uint8 *capabilities);
+void sendCapabilitiesNotificationStruct(
+	capabilitiesNotification *myCapabilitiesNotificaiton);
+	
+void sendMyInterestsNotification(void);
 void sendInterestsNotification(uint8 interestsLength, uint8 *interests,
     uint8 *locales);
+void sendInterestsNotificationStruct(interestsNotification 
+	*myInterestsNotification);
 
 // Safety Alarms
 void sendSafetyAlarm(uint8 riskType, uint8 riskLocale);
 
 // Raw Data
-void sendRawData(uint8 dataLength, uint8 *data);
+void sendRawData(uint16 networkAddress, uint8 dataLength, uint8 *data);
 
 // Get notification data from message buffer
-void getNotificationData(notification *myNotification, message *myMessage);
+void getNotification(notification *myNotification, message myMessage);
     
 // Determine how many notifications are in the message currently in the message 
 // buffer
-uint8 getNumNotifications(message *myMessage);
+uint8 getNumNotifications(message myMessage);
+
+// Get usercommand from the message buffer, populate passed in struct
+void getUserCommand(userCommand *myUserCommand, message myMessage);
+
+// Get notification request from the message buffer
+void getNotificationRequest(notificationRequest *myNotificationRequest, 
+	message myMessage);
+
+// Get subscribe request from message buffer
+void getSubscribeRequest(subscribeRequest *mySubscribeRequest, 
+	message myMessage);
+
+// Get capabilitiy notification from the message buffer
+void getCapabilityNotifification(
+	capabilitiesNotification *myCapabilityNotification, message myMessage);
+	
+// Get interest notification from the message buffer
+void getInterestNotification(interestsNotification *myInterestNotification,
+	message myMessage);
+	
+// Get subscribe instruction from the message buffer
+void getSubscribeInstruction(subscribeInstruction *mySucscribeInstruction,
+	message myMessage);
+	
+// Get safety alarm form the message buffer
+void getSafetyAlarm(safetyAlarm *mySafetyAlarm, message myMessage);
+
+// Get raw data from the message buffer
+void getRawData(rawData *myRawData, message myMessage);
 
 // Scans the address book for nodes that are interested in data contained in the
 // passed in notification and sends data to these nodes.  Returns the number of
