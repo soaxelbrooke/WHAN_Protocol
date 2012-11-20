@@ -11,7 +11,7 @@ void sendMessage(uint32 macHi, uint32 macLow, uint16 networkAddress,
     // TODO: fill in this function to tie it to the system UART
     // It should implement the Zigbee Send Request command
     Zigbee_UART_1_SendMessage(macHi, macLow, networkAddress, rfDataLength, 
-    	rfData);
+        rfData);
 	
 }
 
@@ -30,12 +30,12 @@ void getMessage(uint32 *macHi, uint32 *macLow, uint16 *networkAddress,
 // Populates the passed in struct with data from the RX buffer
 // TODO: this is the second of three buffers if this command is used.  This is
 // probably a good target for optimization.
-void getMessageStruct(message *myMessage)
+void getMessageStruct(uint16 *srcNetworkAddress, uint32 *srcMacLow, 
+    uint32 *srcMacHi, message *myMessage)
 {
-	uint32 misc[1];
 	uint8 rfData[128];
 	
-	getMessage(misc, misc, (uint16*) misc, rfData);
+	getMessage(srcMacHi, srcMacLow, srcNetworkAddress, rfData);
 	
 	myMessage->sourceLocale = rfData[0];
 	myMessage->sourceDeviceType = (uint16) rfData[1];
