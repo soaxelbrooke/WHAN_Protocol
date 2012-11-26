@@ -348,24 +348,111 @@ uint8 numNodesWithCapabilities(uint8 numCapabilities, uint8 *capabilities)
     
 }
 
-// Returns a count of nodes in given locales with given interests
+// Returns a count of nodes in given locale with given interests
 uint8 numNodesInLocaleWithInterests(uint8 numInterests, uint8 locale, 
     uint8 *interests)
 {
+    uint8 i = 0, result = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        if (addressBook[i].locale == locale)
+        {
+            result += nodeHasInterests(addressBook[i].networkAddress, 
+                numInterests, interests);
+            
+        }
+        
+    }
+    
+    return result;
+    
+}
+
+// Returns a count of nodes in given locale with given capabilities
+uint8 numNodesInLocaleWithCapabilities(uint8 numCapabilities, uint8 locale, 
+    uint8 *capabilities)
+{
+    uint8 i = 0, result = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        if (addressBook[i].locale == locale)
+        {
+            result += nodeHasInterests(addressBook[i].networkAddress, 
+                numCapabilities, capabilities);
+            
+        }
+        
+    }
+    
+    return result;
     
 }
 
 uint8 numNodesInLocalesWithInterests(uint8 numInterests, uint8 *locales, 
     uint8 *interests)
 {
-    // TODO: Write this
+    uint8 i = 0, k = 0, j = 0, result = 0;
+    
+    for (i = 0; i < numInterests; i++)
+    {
+        for (k = 0; k < MY_ADDRESS_BOOK_LENGTH; k++)
+        {
+            if (addressBook[k].locale = locales[i])
+            {
+                for (j = 0; j < addressBook[k].numInterests; j++)
+                {
+                    if (addressBook[k].interests[j] == interests[i])
+                    {
+                        result += 1;
+                        break;
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    return result;
+    
 }
 
 // Returns a count of node sin given locales with given capabilities
 uint8 numNodesInLocalesWithCapabilities(uint8 numCapabilities, uint8 *locales, 
     uint8 *capabilities)
 {
-    // TODO: Write this
+    uint8 i = 0, k = 0, j = 0, result = 0;
+    
+    for (i = 0; i < numCapabilities; i++)
+    {
+        for (k = 0; k < MY_ADDRESS_BOOK_LENGTH; k++)
+        {
+            if (addressBook[k].locale = locales[i])
+            {
+                for (j = 0; j < addressBook[k].numCapabilities; j++)
+                {
+                    if (addressBook[k].capabilities[j] == capabilities[i])
+                    {
+                        result += 1;
+                        break;
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    return result;
+    
 }
     
 // Populates a passed in array with list of nodes in given locale.
@@ -528,16 +615,69 @@ void nodesInLocaleWithInterests(uint16 *networkAddresses, uint8 numInterests,
 {
     // TODO: Write this.  Should be pretty similar to the following function.
 }
+
 void nodesInLocalesWithInterests(uint16 *networkAddresses, uint8 numInterests, 
     uint8 *locales, uint8 *interests)
 {
-    // TODO: Write this
+    uint8 i = 0, k = 0, j = 0, numNodes = 0;
+    
+    for (i = 0; i < numInterests; i++)
+    {
+        for (k = 0; k < MY_ADDRESS_BOOK_LENGTH; k++)
+        {
+            if (addressBook[k].locale = locales[i])
+            {
+                for (j = 0; j < addressBook[k].numInterests; j++)
+                {
+                    if (addressBook[k].interests[j] == interests[i])
+                    {
+                        networkAdresses[numNodes] = addressBook[k].networkAddress;
+                        
+                        numNodes += 1;
+                        break;
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
 }
 
 void nodesInLocalesWithCapabilities(uint16 *networkAddresses, 
     uint8 numCapabilities, uint8 *locales, uint8 *capabilities)
 {
-    // TODO: Write this
+    uint8 i = 0, k = 0, j = 0, numNodes = 0;
+    
+    for (i = 0; i < numCapabilities; i++)
+    {
+        for (k = 0; k < MY_ADDRESS_BOOK_LENGTH; k++)
+        {
+            if (addressBook[k].locale = locales[i])
+            {
+                for (j = 0; j < addressBook[k].numCapabilities; j++)
+                {
+                    if (addressBook[k].capabilities[j] == capabilities[i])
+                    {
+                        networkAdresses[numNodes] = addressBook[k].networkAddress;
+                        
+                        numNodes += 1;
+                        break;
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
 }
 
 // Returns a list of all nodes in the network
@@ -603,3 +743,54 @@ void nodeInterests(uint8 *interests, uint16 networkAddress)
     
 }
 
+// Returns a one if the specified node has any of the passed in interests
+uint8 nodeHasInterests(uint16 networkAddress, uint8 numInterests, uint8 *interests)
+{
+    uint8 i = 0, k = 0;
+    result = 0;
+    
+    for (i = 0; i < numInterests; i++)
+    {
+        for (k = 0; k < addressBook[i].numInterests; k++)
+        {
+            if (interests[i] == addressBook.interests[k])
+            {
+                result = 1;
+                break;
+                
+            }
+            
+        }
+        
+    }
+    
+    return result;
+    
+}
+
+
+// Returns a one if the specified node has any of the passed in capabilities
+uint8 nodeHasCapabilities(uint16 networkAddress, uint8 numCapabilities, 
+    uint8 *capabilities)
+{
+    uint8 i = 0, k = 0;
+    result = 0;
+    
+    for (i = 0; i < numCapabilities; i++)
+    {
+        for (k = 0; k < addressBook[i].numCapabilities; k++)
+        {
+            if (capabilities[i] == addressBook.capabilities[k])
+            {
+                result = 1;
+                break;
+                
+            }
+            
+        }
+        
+    }
+    
+    return result;
+    
+}

@@ -118,3 +118,10 @@ uint8 numNodeInterests(uint16 networkAddress);
 // Writes a list of interests a node has to the passed in pointer
 void nodeInterests(uint8 *interests, uint16 networkAddress);
 
+// Returns a one if the specified node has any of the passed in interests
+uint8 nodeHasInterests(uint16 networkAddress, uint8 numInterests, 
+    uint8 *interests);
+
+// Returns a one if the specified node has any of the passed in capabilities
+uint8 nodeHasCapabilities(uint16 networkAddress, uint8 numCapabilities, 
+    uint8 *capabilities);
