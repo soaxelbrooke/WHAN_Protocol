@@ -37,6 +37,7 @@ void getMessageStruct(uint16 *srcNetworkAddress, uint32 *srcMacLow,
 	
 	getMessage(srcMacHi, srcMacLow, srcNetworkAddress, rfData);
 	
+    myMessage->sourceNetworkAddress = srcNetworkAddress;
 	myMessage->sourceLocale = rfData[0];
 	myMessage->sourceDeviceType = (uint16) rfData[1];
 	myMessage->count = rfData[3];

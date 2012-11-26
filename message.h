@@ -33,6 +33,9 @@
 
 typedef struct 
 {
+    uint16 sourceNetworkAddress;
+    uint32 macHi;
+    uint32 macLow;
     uint8 sourceLocale;
     uint16 sourceDeviceType;
     uint8 count;

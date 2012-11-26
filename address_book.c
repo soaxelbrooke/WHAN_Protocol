@@ -2,7 +2,7 @@
 
 #include "address_book.h"
 
-static address_entry addressBook[MY_ADDRESS_BOOK_LENGTH];
+address_entry addressBook[MY_ADDRESS_BOOK_LENGTH];
 
 // TODO: make some mechanism for storing this in non-volatile memory!
 
@@ -153,6 +153,28 @@ uint32 getMacHigh(uint16 networkAddress)
         if (addressBook[i].networkAddress == networkAddress)
         {
             result = addressBook[i].macHi;
+            
+            break;
+            
+        }
+        
+    }
+    
+    return result;
+    
+}
+
+// Gets a pointer to a struct for the given address
+address_entry *getAddressEntryPointer(uint16 networkAddress)
+{
+    address_entry *result;
+    uint8 i = 0;
+    
+    for (i = 0; i < MY_ADDRESS_BOOK_LENGTH; i++)
+    {
+        if (addressBook[i].networkAddress == networkAddress)
+        {
+            result = addressBook;
             
             break;
             
@@ -322,20 +344,28 @@ uint8 numNodesWithCapabilities(uint8 numCapabilities, uint8 *capabilities)
         
     }
     
+    return result;
+    
 }
 
 // Returns a count of nodes in given locales with given interests
-uint8 numNodesInLocalesWithInterests(uint8 numLocales, uint8 *locales, 
-    uint8 numInterests, uint8 *interests)
+uint8 numNodesInLocaleWithInterests(uint8 numInterests, uint8 locale, 
+    uint8 *interests)
 {
-    return 0;
+    
+}
+
+uint8 numNodesInLocalesWithInterests(uint8 numInterests, uint8 *locales, 
+    uint8 *interests)
+{
+    // TODO: Write this
 }
 
 // Returns a count of node sin given locales with given capabilities
-uint8 numNodesInLocalesWithCapabilities(uint8 numLocales, uint8 *locales, 
-    uint8 numCapabilities, uint8 *capabilities)
+uint8 numNodesInLocalesWithCapabilities(uint8 numCapabilities, uint8 *locales, 
+    uint8 *capabilities)
 {
-    return 0;
+    // TODO: Write this
 }
     
 // Populates a passed in array with list of nodes in given locale.
@@ -493,16 +523,21 @@ void nodesWithCapabilities(uint16 *networkAddresses, uint8 numCapabilities,
 // Populates passed in network addres array with list of nodes in given locales
 // with given interests or capabilities.  Assumes that nodes have been counted 
 // and that proper memory has been allocated.
-void nodesInLocalesWithInterests(uint16 *networkAddresses, uint8 numLocales,
-    uint8 *locales, uint8 numInterests, uint8 *interests)
+void nodesInLocaleWithInterests(uint16 *networkAddresses, uint8 numInterests, 
+    uint8 locale, uint8 *interests)
 {
-    
+    // TODO: Write this.  Should be pretty similar to the following function.
+}
+void nodesInLocalesWithInterests(uint16 *networkAddresses, uint8 numInterests, 
+    uint8 *locales, uint8 *interests)
+{
+    // TODO: Write this
 }
 
-void nodesInLocalesWithCapabilities(uint16 *networkAddresses, uint8 numLocales,
-    uint8 *locales, uint8 numCapabilities, uint8 *capabilities)
+void nodesInLocalesWithCapabilities(uint16 *networkAddresses, 
+    uint8 numCapabilities, uint8 *locales, uint8 *capabilities)
 {
-    
+    // TODO: Write this
 }
 
 // Returns a list of all nodes in the network

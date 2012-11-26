@@ -38,6 +38,8 @@ uint32 getMacLow(uint16 networkAddress);
 // Gets the hi 32 bits of the MAC associated with the passed in network address
 uint32 getMacHigh(uint16 networkAddress);
 
+// Gets a pointer to a struct for the given address
+address_entry *getAddressEntryPointer(uint16 networkAddress);
 
 // Returns a count of the number of nodes in the address book with the passed in
 // interest
@@ -51,6 +53,8 @@ uint8 numNodesWithInterests(uint8 numIntersts, uint8 *interests);
 // locale
 uint8 numNodesInLocale(uint8 locale);
 
+
+
 // Returns a count of the number of nodes in the address book in the passed in 
 // locales
 uint8 numNodesInLocales(uint8 numLocales, uint8 *locales);
@@ -62,12 +66,16 @@ uint8 numNodesWithCapability(uint8 capability);
 uint8 numNodesWithCapabilities(uint8 numCapabilities, uint8 *capabilites);
 
 // Returns a count of nodes in given locales with given interests
-uint8 numNodesInLocalesWithInterests(uint8 numLocales, uint8 *locales, 
-    uint8 numInterests, uint8 *interests);
+uint8 numNodesInLocalesWithInterests(uint8 numInterests, uint8 *locales, 
+    uint8 *interests);
+uint8 numNodesWithInterestsInLocale(uint8 numInterests, uint8 locale, 
+    uint8 *interests);
 
 // Returns a count of node sin given locales with given capabilities
-uint8 numNodesInLocalesWithCapabilities(uint8 numLocales, uint8 *locales, 
-    uint8 numCapabilities, uint8 *capabilities);
+uint8 numNodesInLocalesWithCapabilities(uint8 numCapabilities, uint8 *locales, 
+    uint8 *capabilities);
+uint8 numNodesWithCapabilitiesInLocale(uint8 numCapabilities, uint8 locale, 
+    uint8 *capabilities);
     
 // Populates a passed in array with list of nodes in given locale.
 // Assumes that nodes have been counted and that proper memory has been 
@@ -92,10 +100,14 @@ void nodesWithCapabilities(uint16 *networkAddresses, uint8 numCapabilities,
 // Populates passed in network addres array with list of nodes in given locales
 // with given interests or capabilities.  Assumes that nodes have been counted 
 // and that proper memory has been allocated.
-void nodesInLocalesWithInterests(uint16 *networkAddresses, uint8 numLocales,
-    uint8 *locales, uint8 numInterests, uint8 *interests);
-void nodesInLocalesWithCapabilities(uint16 *networkAddresses, uint8 numLocales,
-    uint8 *locales, uint8 numCapabilities, uint8 *capabilities);
+void numNodesWithInterestsInLocale(uint16 *networkAddresses, uint8 numInterests, 
+    uint8 locale, uint8 *interests);
+void nodesInLocalesWithInterests(uint16 *networkAddresses, uint8 numInterests, 
+    uint8 *locales, uint8 *interests);
+void nodesWithCapabilitiesInLocale(uint16 *networkAddresses, 
+    uint8 numCapabilities, uint8 locale, uint8 *capabilities);
+void nodesInLocalesWithCapabilities(uint16 *networkAddresses, 
+    uint8 numCapabilities, uint8 *locales, uint8 *capabilities);
     
 // Writes a list of all nodes in the network to the passed in pointer
 void nodesInAddressBook(uint16 *networkAddresses);

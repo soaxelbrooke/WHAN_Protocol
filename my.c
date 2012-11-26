@@ -3,6 +3,7 @@
 #include "my.h"
 
 static uint8 myLocale;
+// NOTE!!! Coordinators should have _ALL_ interests and capabilites!
 uint8 myInterests[] = {UNIT_TYPE_LUMENS, UNIT_TYPE_OCCUPANTS};
 uint8 myInterestsLocales[] = {0, 0};
 uint8 myCapabilities[] = {0};

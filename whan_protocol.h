@@ -51,10 +51,9 @@ void sendSubscribeRequest(uint16 networkAddress, uint8 numTypes,
 
 #ifdef COORDINATOR
 // Subscribe Instruction
-void sendSubscribeInstruction(uint16 networkAddress, uint16 networkAddress,
-    uint32 macHi, uint32 macLow, uint8 locale, uint8 numberOfCapabilities,
-    uint8 *capabilities);
-
+void sendSubscribeInstruction(uint16 targetNetworkAddress, 
+    uint16 networkAddress, uint32 macHi, uint32 macLow, uint8 locale, 
+    uint8 numberOfCapabilities, uint8 *capabilities);
 #endif
 
 // Response
