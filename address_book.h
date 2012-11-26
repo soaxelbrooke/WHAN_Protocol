@@ -100,14 +100,14 @@ void nodesWithCapabilities(uint16 *networkAddresses, uint8 numCapabilities,
 // Populates passed in network addres array with list of nodes in given locales
 // with given interests or capabilities.  Assumes that nodes have been counted 
 // and that proper memory has been allocated.
-void numNodesWithInterestsInLocale(uint16 *networkAddresses, uint8 numInterests, 
+uint8 nodesWithInterestsInLocale(uint16 *networkAddresses, uint8 numInterests, 
     uint8 locale, uint8 *interests);
-void nodesInLocalesWithInterests(uint16 *networkAddresses, uint8 numInterests, 
-    uint8 *locales, uint8 *interests);
+//void nodesInLocalesWithInterests(uint16 *networkAddresses, uint8 numInterests, 
+//    uint8 *locales, uint8 *interests);
 void nodesWithCapabilitiesInLocale(uint16 *networkAddresses, 
     uint8 numCapabilities, uint8 locale, uint8 *capabilities);
-void nodesInLocalesWithCapabilities(uint16 *networkAddresses, 
-    uint8 numCapabilities, uint8 *locales, uint8 *capabilities);
+//void nodesInLocalesWithCapabilities(uint16 *networkAddresses, 
+//    uint8 numCapabilities, uint8 *locales, uint8 *capabilities);
     
 // Writes a list of all nodes in the network to the passed in pointer
 void nodesInAddressBook(uint16 *networkAddresses);

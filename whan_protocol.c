@@ -12,7 +12,7 @@ void sendMessage(uint32 macHi, uint32 macLow, uint16 networkAddress,
     // It should implement the Zigbee Send Request command
     Zigbee_UART_1_SendMessage(macHi, macLow, networkAddress, rfDataLength, 
         rfData);
-	
+    
 }
 
 // Get message from the receive buffer and put it into the passed in variables
@@ -37,7 +37,7 @@ void getMessageStruct(uint16 *srcNetworkAddress, uint32 *srcMacLow,
 	
 	getMessage(srcMacHi, srcMacLow, srcNetworkAddress, rfData);
 	
-    myMessage->sourceNetworkAddress = srcNetworkAddress;
+    myMessage->sourceNetworkAddress = *srcNetworkAddress;
 	myMessage->sourceLocale = rfData[0];
 	myMessage->sourceDeviceType = (uint16) rfData[1];
 	myMessage->count = rfData[3];

@@ -399,7 +399,7 @@ uint8 numNodesInLocalesWithInterests(uint8 numInterests, uint8 *locales,
     {
         for (k = 0; k < MY_ADDRESS_BOOK_LENGTH; k++)
         {
-            if (addressBook[k].locale = locales[i])
+            if (addressBook[k].locale == locales[i])
             {
                 for (j = 0; j < addressBook[k].numInterests; j++)
                 {
@@ -432,7 +432,7 @@ uint8 numNodesInLocalesWithCapabilities(uint8 numCapabilities, uint8 *locales,
     {
         for (k = 0; k < MY_ADDRESS_BOOK_LENGTH; k++)
         {
-            if (addressBook[k].locale = locales[i])
+            if (addressBook[k].locale == locales[i])
             {
                 for (j = 0; j < addressBook[k].numCapabilities; j++)
                 {
@@ -625,13 +625,13 @@ void nodesInLocalesWithInterests(uint16 *networkAddresses, uint8 numInterests,
     {
         for (k = 0; k < MY_ADDRESS_BOOK_LENGTH; k++)
         {
-            if (addressBook[k].locale = locales[i])
+            if (addressBook[k].locale == locales[i])
             {
                 for (j = 0; j < addressBook[k].numInterests; j++)
                 {
                     if (addressBook[k].interests[j] == interests[i])
                     {
-                        networkAdresses[numNodes] = addressBook[k].networkAddress;
+                        networkAddresses[numNodes] = addressBook[k].networkAddress;
                         
                         numNodes += 1;
                         break;
@@ -657,13 +657,13 @@ void nodesInLocalesWithCapabilities(uint16 *networkAddresses,
     {
         for (k = 0; k < MY_ADDRESS_BOOK_LENGTH; k++)
         {
-            if (addressBook[k].locale = locales[i])
+            if (addressBook[k].locale == locales[i])
             {
                 for (j = 0; j < addressBook[k].numCapabilities; j++)
                 {
                     if (addressBook[k].capabilities[j] == capabilities[i])
                     {
-                        networkAdresses[numNodes] = addressBook[k].networkAddress;
+                        networkAddresses[numNodes] = addressBook[k].networkAddress;
                         
                         numNodes += 1;
                         break;
@@ -747,13 +747,13 @@ void nodeInterests(uint8 *interests, uint16 networkAddress)
 uint8 nodeHasInterests(uint16 networkAddress, uint8 numInterests, uint8 *interests)
 {
     uint8 i = 0, k = 0;
-    result = 0;
+    uint8 result = 0;
     
     for (i = 0; i < numInterests; i++)
     {
         for (k = 0; k < addressBook[i].numInterests; k++)
         {
-            if (interests[i] == addressBook.interests[k])
+            if (interests[i] == addressBook[i].interests[k])
             {
                 result = 1;
                 break;
@@ -774,13 +774,13 @@ uint8 nodeHasCapabilities(uint16 networkAddress, uint8 numCapabilities,
     uint8 *capabilities)
 {
     uint8 i = 0, k = 0;
-    result = 0;
+    uint8 result = 0;
     
     for (i = 0; i < numCapabilities; i++)
     {
         for (k = 0; k < addressBook[i].numCapabilities; k++)
         {
-            if (capabilities[i] == addressBook.capabilities[k])
+            if (capabilities[i] == addressBook[i].capabilities[k])
             {
                 result = 1;
                 break;
